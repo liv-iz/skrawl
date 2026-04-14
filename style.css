@@ -1,0 +1,68 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Stage: fixed 1280x720, scaled by JS */
+.stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1280px;
+  height: 720px;
+  transform-origin: center center;
+  background: #000;
+}
+
+/* Screens stack; only .active is visible */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+.screen.active { display: block; }
+
+/* Placeholder background — replace with final art */
+.placeholder-bg {
+  position: absolute;
+  inset: 0;
+  background-color: #f4ecd8;
+  background-image:
+    linear-gradient(rgba(139, 105, 20, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 105, 20, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.debug-label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: #8b6914;
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+/* Rotate prompt */
+.rotate-prompt {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #1a1a1a;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  color: #f4ecd8;
+  font-size: 24px;
+  text-align: center;
+  padding: 32px;
+}
+.rotate-prompt.active { display: flex; }
+.rotate-message { max-width: 400px; }
