@@ -45,6 +45,63 @@
     if (a !== e) throw new Error(`${msg || 'assertEqual'}: expected ${e}, got ${a}`);
   };
 
+  describe('Dialogue.createPlayer', function () {
+    const bubbles = [
+      { lines: [
+        { text: 'Line A' },
+        { text: 'Line B', popup: 'p1' }
+      ]},
+      { lines: [
+        { text: 'Line C', popup: 'dismiss' }
+      ], isExit: true }
+    ];
+
+    it('starts on the first line of the first bubble', function () {
+      const p = Dialogue.createPlayer(bubbles);
+      const c = p.current();
+      assertEqual(c.line.text, 'Line A');
+      assertEqual(c.bubbleIndex, 0);
+      assertEqual(c.lineIndex, 0);
+      assertEqual(c.isNewBubble, true);
+      assertEqual(p.done, false);
+    });
+
+    it('advance moves to next line in same bubble (not new bubble)', function () {
+      const p = Dialogue.createPlayer(bubbles);
+      p.advance();
+      const c = p.current();
+      assertEqual(c.line.text, 'Line B');
+      assertEqual(c.bubbleIndex, 0);
+      assertEqual(c.lineIndex, 1);
+      assertEqual(c.isNewBubble, false);
+      assertEqual(c.line.popup, 'p1');
+    });
+
+    it('advance crosses into next bubble (isNewBubble true)', function () {
+      const p = Dialogue.createPlayer(bubbles);
+      p.advance();
+      p.advance();
+      const c = p.current();
+      assertEqual(c.line.text, 'Line C');
+      assertEqual(c.bubbleIndex, 1);
+      assertEqual(c.lineIndex, 0);
+      assertEqual(c.isNewBubble, true);
+    });
+
+    it('advance past last line sets done', function () {
+      const p = Dialogue.createPlayer(bubbles);
+      p.advance(); p.advance(); p.advance();
+      assertEqual(p.done, true);
+    });
+
+    it('advance is no-op once done', function () {
+      const p = Dialogue.createPlayer(bubbles);
+      p.advance(); p.advance(); p.advance();
+      p.advance();
+      assertEqual(p.done, true);
+    });
+  });
+
   window.addEventListener('load', function () {
     setTimeout(function () {
       const summary = document.createElement('h2');

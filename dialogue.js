@@ -29,10 +29,142 @@
     'form-reinforced-base':   () => makePlaceholder('REINFORCED + ROOF + BASE', '#6e2c00')
   };
 
-  function playSequence(sequenceKey, onExit) {
-    console.warn('playSequence stub:', sequenceKey);
-    if (onExit) onExit();
+  function createPlayer(bubbles) {
+    let bubbleIndex = 0;
+    let lineIndex = 0;
+    let done = bubbles.length === 0;
+    let lastBubbleIndex = -1;
+
+    const player = {
+      get done() { return done; },
+      current() {
+        if (done) return null;
+        const bubble = bubbles[bubbleIndex];
+        const line = bubble.lines[lineIndex];
+        return {
+          bubbleIndex,
+          lineIndex,
+          line,
+          bubble,
+          isNewBubble: bubbleIndex !== lastBubbleIndex
+        };
+      },
+      advance() {
+        if (done) return;
+        lastBubbleIndex = bubbleIndex;
+        const bubble = bubbles[bubbleIndex];
+        if (lineIndex + 1 < bubble.lines.length) {
+          lineIndex++;
+        } else if (bubbleIndex + 1 < bubbles.length) {
+          bubbleIndex++;
+          lineIndex = 0;
+        } else {
+          done = true;
+        }
+      }
+    };
+    return player;
   }
 
-  window.Dialogue = { playSequence, POPUP_CONTENT };
+  let activePopupKey = null;
+  let tapHandler = null;
+
+  function getBubbleEl() { return document.getElementById('dialogue-bubble'); }
+  function getPopupLayer() { return document.getElementById('popup-layer'); }
+
+  function renderBubble(line, isNewBubble) {
+    const el = getBubbleEl();
+    if (!el) return;
+    if (isNewBubble) {
+      el.classList.remove('bubble-fade-in');
+      void el.offsetWidth;
+      el.classList.add('bubble-fade-in');
+    }
+    el.textContent = line.text;
+  }
+
+  function applyPopup(key) {
+    const layer = getPopupLayer();
+    if (!layer) return;
+    if (key === undefined || key === null) return;
+    if (key === 'dismiss') {
+      layer.innerHTML = '';
+      activePopupKey = null;
+      return;
+    }
+    if (key === activePopupKey) return;
+    layer.innerHTML = '';
+    const factory = POPUP_CONTENT[key];
+    if (!factory) {
+      console.warn('Unknown popup key:', key);
+      return;
+    }
+    layer.appendChild(factory());
+    activePopupKey = key;
+  }
+
+  function dismissAnyPopup() {
+    const layer = getPopupLayer();
+    if (layer) layer.innerHTML = '';
+    activePopupKey = null;
+  }
+
+  function playSequence(sequenceKey, onExit) {
+    const bubbles = (window.SEQUENCES || {})[sequenceKey];
+    if (!bubbles) {
+      console.warn('Unknown sequence:', sequenceKey);
+      if (onExit) onExit();
+      return;
+    }
+
+    dismissAnyPopup();
+
+    const player = createPlayer(bubbles);
+
+    function step() {
+      const c = player.current();
+      if (!c) {
+        removeTapHandler();
+        dismissAnyPopup();
+        if (onExit) onExit();
+        return;
+      }
+      renderBubble(c.line, c.isNewBubble);
+      applyPopup(c.line.popup);
+    }
+
+    function onTap(e) {
+      e.preventDefault();
+      player.advance();
+      step();
+    }
+
+    function addTapHandler() {
+      tapHandler = onTap;
+      document.addEventListener('click', tapHandler);
+      document.addEventListener('touchend', tapHandler);
+    }
+
+    function removeTapHandler() {
+      if (tapHandler) {
+        document.removeEventListener('click', tapHandler);
+        document.removeEventListener('touchend', tapHandler);
+        tapHandler = null;
+      }
+    }
+
+    step();
+    addTapHandler();
+  }
+
+  function stop() {
+    if (tapHandler) {
+      document.removeEventListener('click', tapHandler);
+      document.removeEventListener('touchend', tapHandler);
+      tapHandler = null;
+    }
+    dismissAnyPopup();
+  }
+
+  window.Dialogue = { playSequence, stop, createPlayer, POPUP_CONTENT };
 })();

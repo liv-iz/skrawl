@@ -110,3 +110,48 @@ html, body {
   background: #8B6914;
 }
 .placeholder-narrator::after { content: "🧙"; font-size: 100px; }
+
+/* Popup layer — Main Stage area (x:280-980, y:0-560) */
+.popup-layer {
+  position: absolute;
+  left: 280px;
+  top: 0;
+  width: 700px;
+  height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+.popup-layer:empty { display: none; }
+
+/* Dialogue strip — full width, y:560-720 */
+.dialogue-strip {
+  position: absolute;
+  left: 0;
+  top: 560px;
+  width: 1280px;
+  height: 160px;
+  background: #fff;
+  border-top: 4px solid #c9a961;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 48px;
+  z-index: 3;
+}
+.dialogue-strip.hidden { display: none; }
+
+.dialogue-bubble {
+  font-size: 28px;
+  line-height: 1.4;
+  color: #3a2e1f;
+  text-align: center;
+  max-width: 1100px;
+}
+.bubble-fade-in { animation: fadeIn 0.25s ease-out; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
