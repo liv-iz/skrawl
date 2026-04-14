@@ -179,11 +179,65 @@
   }
   window.startCamera = startCamera;
 
+  const BLUR_THRESHOLD = 80;
+  let pendingPhotoBlob = null;
+  let pendingPhotoUrl = null;
+
   function showPreview(critterId, blob, variance) {
-    console.log('TODO: preview', critterId, blob, 'variance:', variance);
-    showScreen('screen-crafting');
+    if (pendingPhotoUrl) URL.revokeObjectURL(pendingPhotoUrl);
+    pendingPhotoBlob = blob;
+    pendingPhotoUrl = URL.createObjectURL(blob);
+
+    const img = document.createElement('img');
+    img.src = pendingPhotoUrl;
+    const container = document.getElementById('preview-photo');
+    container.innerHTML = '';
+    container.appendChild(img);
+
+    showScreen('screen-preview');
+
+    const modal = document.getElementById('blur-modal');
+    modal.classList.toggle('active', typeof variance === 'number' && variance < BLUR_THRESHOLD);
+
+    document.getElementById('btn-retake').onclick = function (e) {
+      e.stopPropagation();
+      onRetake(critterId);
+    };
+    document.getElementById('btn-confirm').onclick = function (e) {
+      e.stopPropagation();
+      onConfirm(critterId);
+    };
+    document.getElementById('btn-blur-retake').onclick = function (e) {
+      e.stopPropagation();
+      modal.classList.remove('active');
+      onRetake(critterId);
+    };
+    document.getElementById('btn-blur-useanyway').onclick = function (e) {
+      e.stopPropagation();
+      modal.classList.remove('active');
+    };
   }
   window.showPreview = showPreview;
+
+  function onRetake(critterId) {
+    if (pendingPhotoUrl) { URL.revokeObjectURL(pendingPhotoUrl); pendingPhotoUrl = null; }
+    pendingPhotoBlob = null;
+    startCamera(critterId);
+  }
+
+  async function onConfirm(critterId) {
+    if (!pendingPhotoBlob) return;
+    await DB.saveOrder(critterId, pendingPhotoBlob);
+    if (pendingPhotoUrl) { URL.revokeObjectURL(pendingPhotoUrl); pendingPhotoUrl = null; }
+    pendingPhotoBlob = null;
+    showReaction(critterId);
+  }
+
+  function showReaction(critterId) {
+    console.log('TODO: reaction for', critterId);
+    goToOrderList();
+  }
+  window.showReaction = showReaction;
 
   window.addEventListener('load', boot);
 })();
