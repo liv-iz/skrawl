@@ -233,11 +233,40 @@
     showReaction(critterId);
   }
 
-  function showReaction(critterId) {
-    console.log('TODO: reaction for', critterId);
-    goToOrderList();
+  async function showReaction(critterId) {
+    const c = CRITTERS[critterId];
+
+    document.getElementById('reaction-critter').innerHTML =
+      `<div class="${c.spriteClass}"></div>`;
+
+    const orders = await DB.loadOrders();
+    const order = orders.find(o => o.critterId === critterId);
+    const mainStage = document.getElementById('reaction-photo');
+    mainStage.innerHTML = '';
+    if (order && order.photoBlob) {
+      const img = document.createElement('img');
+      const url = URL.createObjectURL(order.photoBlob);
+      img.src = url;
+      img.style.maxWidth = '100%';
+      img.style.maxHeight = '100%';
+      img.style.objectFit = 'contain';
+      img.style.borderRadius = '8px';
+      img.onload = function () { URL.revokeObjectURL(url); };
+      mainStage.appendChild(img);
+    }
+
+    showScreen('screen-reaction');
+    Dialogue.playSequence(c.reactionSequence, function () {
+      showScrapbook(critterId);
+    });
   }
   window.showReaction = showReaction;
+
+  function showScrapbook(justCompletedCritterId) {
+    console.log('TODO: scrapbook, just completed:', justCompletedCritterId);
+    goToOrderList();
+  }
+  window.showScrapbook = showScrapbook;
 
   window.addEventListener('load', boot);
 })();
