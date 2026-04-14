@@ -262,11 +262,66 @@
   }
   window.showReaction = showReaction;
 
-  function showScrapbook(justCompletedCritterId) {
-    console.log('TODO: scrapbook, just completed:', justCompletedCritterId);
-    goToOrderList();
+  async function showScrapbook(justCompletedCritterId) {
+    const orders = await DB.loadOrders();
+    const byId = Object.fromEntries(orders.map(o => [o.critterId, o]));
+
+    const container = document.getElementById('scrapbook-slots');
+    container.innerHTML = '';
+    container.style.display = 'flex';
+
+    const ids = ['paper', 'felt', 'wood'];
+    const imgUrls = [];
+    ids.forEach(function (id) {
+      const c = CRITTERS[id];
+      const slot = document.createElement('div');
+      slot.className = 'scrapbook-slot';
+      const order = byId[id];
+      if (order && order.photoBlob) {
+        const url = URL.createObjectURL(order.photoBlob);
+        imgUrls.push(url);
+        const img = document.createElement('img');
+        img.src = url;
+        slot.appendChild(img);
+        const label = document.createElement('div');
+        label.className = 'scrapbook-slot-label';
+        label.textContent = c.name;
+        slot.appendChild(label);
+        if (id === justCompletedCritterId) slot.classList.add('new');
+      } else {
+        slot.classList.add('empty');
+        slot.textContent = `${c.name}\n(not yet made)`;
+        slot.style.whiteSpace = 'pre-line';
+      }
+      container.appendChild(slot);
+    });
+
+    showScreen('screen-scrapbook');
+
+    const allDone = orders.length >= 3;
+    const shown = await DB.getMeta('finalClosingShown');
+    if (allDone && !shown) {
+      Dialogue.playSequence('final-closing', async function () {
+        await DB.setMeta('finalClosingShown', true);
+        wireScrapbookContinue(imgUrls);
+      });
+    } else {
+      document.getElementById('dialogue-bubble').textContent =
+        justCompletedCritterId
+          ? `Another one for the order book!`
+          : `Your order book so far…`;
+      wireScrapbookContinue(imgUrls);
+    }
   }
   window.showScrapbook = showScrapbook;
+
+  function wireScrapbookContinue(imgUrls) {
+    const btn = document.getElementById('btn-scrapbook-continue');
+    btn.onclick = function () {
+      imgUrls.forEach(u => URL.revokeObjectURL(u));
+      goToOrderList();
+    };
+  }
 
   window.addEventListener('load', boot);
 })();
