@@ -133,7 +133,12 @@
       applyPopup(c.line.popup);
     }
 
+    let lastTap = 0;
     function onTap(e) {
+      const now = Date.now();
+      if (now - lastTap < 120) return;
+      lastTap = now;
+      if (e.target && e.target.closest && e.target.closest('button')) return;
       e.preventDefault();
       player.advance();
       step();
