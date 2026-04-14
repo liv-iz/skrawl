@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skrawl Tests</title>
+  <style>
+    body { font-family: monospace; padding: 16px; background: #111; color: #eee; }
+    .pass { color: #8f8; }
+    .fail { color: #f88; }
+    .group { margin-top: 16px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Skrawl Tests</h1>
+  <div id="results"></div>
+
+  <!-- modules under test (append as they exist) -->
+  <script src="dialogue.js" defer></script>
+  <script src="camera.js" defer></script>
+
+  <script src="tests.js" defer></script>
+</body>
+</html>
