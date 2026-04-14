@@ -97,9 +97,43 @@
 
   async function goToOrderList() {
     showScreen('screen-order-list');
-    console.log('TODO: render order list');
+
+    const orders = await DB.loadOrders();
+    const completedIds = new Set(orders.map(o => o.critterId));
+
+    const container = document.getElementById('order-cards');
+    container.innerHTML = '';
+    container.style.display = 'flex';
+
+    const ids = ['paper', 'felt', 'wood'];
+    ids.forEach(function (id) {
+      const c = CRITTERS[id];
+      const card = document.createElement('div');
+      card.className = 'order-card';
+      if (completedIds.has(id)) card.classList.add('completed');
+      card.innerHTML = `
+        <div class="order-card-sprite ${c.spriteClass}"></div>
+        <div class="order-card-name">${c.name}</div>
+        <div class="order-card-element">${c.element}</div>
+        <div class="order-card-material">${c.material}</div>
+      `;
+      if (!completedIds.has(id)) {
+        card.addEventListener('click', function (e) {
+          e.stopPropagation();
+          startOrder(id);
+        });
+      }
+      container.appendChild(card);
+    });
+
+    document.getElementById('dialogue-bubble').textContent = "Who needs help today?";
   }
   window.goToOrderList = goToOrderList;
+
+  function startOrder(critterId) {
+    console.log('TODO: start order', critterId);
+  }
+  window.startOrder = startOrder;
 
   window.addEventListener('load', boot);
 })();
