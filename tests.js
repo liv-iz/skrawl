@@ -102,6 +102,42 @@
     });
   });
 
+  describe('Camera.computeBlurVariance', function () {
+    function makeSolidImageData(w, h, v) {
+      const data = new Uint8ClampedArray(w * h * 4);
+      for (let i = 0; i < data.length; i += 4) {
+        data[i] = data[i+1] = data[i+2] = v;
+        data[i+3] = 255;
+      }
+      return { data, width: w, height: h };
+    }
+
+    function makeCheckerImageData(w, h) {
+      const data = new Uint8ClampedArray(w * h * 4);
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          const idx = (y * w + x) * 4;
+          const v = ((x + y) % 2) * 255;
+          data[idx] = data[idx+1] = data[idx+2] = v;
+          data[idx+3] = 255;
+        }
+      }
+      return { data, width: w, height: h };
+    }
+
+    it('solid image has near-zero variance (very blurry)', function () {
+      const img = makeSolidImageData(32, 32, 128);
+      const v = Camera.computeBlurVariance(img);
+      assert(v < 1, 'solid image variance should be < 1, got ' + v);
+    });
+
+    it('checkerboard has high variance (very sharp)', function () {
+      const img = makeCheckerImageData(32, 32);
+      const v = Camera.computeBlurVariance(img);
+      assert(v > 1000, 'checkerboard variance should be > 1000, got ' + v);
+    });
+  });
+
   window.addEventListener('load', function () {
     setTimeout(function () {
       const summary = document.createElement('h2');

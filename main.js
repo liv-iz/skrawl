@@ -169,8 +169,8 @@
   function startCamera(critterId) {
     showScreen('screen-camera');
     Camera.open(
-      function onCapture(blob) {
-        showPreview(critterId, blob);
+      function onCapture(blob, variance) {
+        showPreview(critterId, blob, variance);
       },
       function onCancel() {
         showCrafting(critterId);
@@ -179,8 +179,8 @@
   }
   window.startCamera = startCamera;
 
-  function showPreview(critterId, blob) {
-    console.log('TODO: preview', critterId, blob);
+  function showPreview(critterId, blob, variance) {
+    console.log('TODO: preview', critterId, blob, 'variance:', variance);
     showScreen('screen-crafting');
   }
   window.showPreview = showPreview;
