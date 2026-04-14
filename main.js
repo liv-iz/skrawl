@@ -131,9 +131,45 @@
   window.goToOrderList = goToOrderList;
 
   function startOrder(critterId) {
-    console.log('TODO: start order', critterId);
+    const c = CRITTERS[critterId];
+    if (!c) return;
+
+    const panel = document.getElementById('lesson-critter');
+    panel.innerHTML = `<div class="${c.spriteClass}"></div>`;
+
+    showScreen('screen-lesson');
+    Dialogue.playSequence(c.lessonSequence, function () {
+      showCrafting(critterId);
+    });
   }
   window.startOrder = startOrder;
+
+  function showCrafting(critterId) {
+    const c = CRITTERS[critterId];
+
+    const panel = document.getElementById('crafting-critter');
+    panel.innerHTML = `<div class="${c.spriteClass}"></div>`;
+
+    const text = document.getElementById('crafting-text');
+    text.innerHTML = `
+      <div style="font-size:36px;font-weight:bold;margin-bottom:16px;">${c.task}</div>
+      <div style="font-size:24px;margin-bottom:24px;">Tip: ${c.tip}</div>
+      <div style="font-size:22px;color:#5a4a35;">When you're ready, photograph your creation against a neutral background.</div>
+    `;
+
+    showScreen('screen-crafting');
+
+    const btn = document.getElementById('btn-take-photo');
+    btn.onclick = function (e) {
+      e.stopPropagation();
+      startCamera(critterId);
+    };
+  }
+
+  function startCamera(critterId) {
+    console.log('TODO: start camera for', critterId);
+  }
+  window.startCamera = startCamera;
 
   window.addEventListener('load', boot);
 })();
