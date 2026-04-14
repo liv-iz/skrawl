@@ -73,6 +73,11 @@
     const hideStrip = (id === 'screen-camera' || id === 'screen-preview');
     dialogueStrip.classList.toggle('hidden', hideStrip);
 
+    const showScrapbookBtn = (id === 'screen-order-list');
+    const btn = document.getElementById('btn-open-scrapbook');
+    if (btn) btn.style.display = showScrapbookBtn ? 'block' : 'none';
+    closeScrapbookOverlay();
+
     currentScreen = id;
   }
   window.showScreen = showScreen;
@@ -322,6 +327,57 @@
       goToOrderList();
     };
   }
+
+  let overlayUrls = [];
+  function closeScrapbookOverlay() {
+    const overlay = document.getElementById('scrapbook-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    overlayUrls.forEach(u => URL.revokeObjectURL(u));
+    overlayUrls = [];
+    const slots = document.getElementById('scrapbook-overlay-slots');
+    if (slots) slots.innerHTML = '';
+  }
+
+  async function openScrapbookOverlay() {
+    const orders = await DB.loadOrders();
+    const byId = Object.fromEntries(orders.map(o => [o.critterId, o]));
+    const slots = document.getElementById('scrapbook-overlay-slots');
+    slots.innerHTML = '';
+    overlayUrls = [];
+    ['paper', 'felt', 'wood'].forEach(function (id) {
+      const c = CRITTERS[id];
+      const slot = document.createElement('div');
+      slot.className = 'scrapbook-slot';
+      const order = byId[id];
+      if (order && order.photoBlob) {
+        const url = URL.createObjectURL(order.photoBlob);
+        overlayUrls.push(url);
+        const img = document.createElement('img');
+        img.src = url;
+        slot.appendChild(img);
+        const label = document.createElement('div');
+        label.className = 'scrapbook-slot-label';
+        label.textContent = c.name;
+        slot.appendChild(label);
+      } else {
+        slot.classList.add('empty');
+        slot.textContent = `${c.name}\n(not yet made)`;
+        slot.style.whiteSpace = 'pre-line';
+      }
+      slots.appendChild(slot);
+    });
+    document.getElementById('scrapbook-overlay').classList.add('active');
+  }
+
+  document.getElementById('btn-open-scrapbook').addEventListener('click', function (e) {
+    e.stopPropagation();
+    openScrapbookOverlay();
+  });
+  document.getElementById('btn-close-scrapbook').addEventListener('click', function (e) {
+    e.stopPropagation();
+    closeScrapbookOverlay();
+  });
 
   window.addEventListener('load', boot);
 })();

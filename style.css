@@ -446,3 +446,78 @@ html, body {
   50%  { box-shadow: 0 0 24px 8px rgba(201,169,97,0.7); }
   100% { box-shadow: 0 0 0 0 rgba(201,169,97,0.0); }
 }
+
+/* Persistent scrapbook button (top-right of stage) */
+.btn-scrapbook-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  background: #c9a961;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 180px;
+  min-height: 60px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Scrapbook popup overlay */
+.scrapbook-overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 20;
+}
+.scrapbook-overlay.active { display: flex; }
+
+.scrapbook-frame-placeholder {
+  position: relative;
+  width: 960px;
+  height: 560px;
+  background: #f4ecd8;
+  border: 6px dashed #c9a961;
+  border-radius: 16px;
+  padding: 48px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.scrapbook-frame-label {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  font-size: 14px;
+  color: #8b6914;
+  opacity: 0.75;
+  letter-spacing: 1px;
+}
+.scrapbook-overlay-slots {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.btn-scrapbook-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #3a2e1f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  min-width: 100px;
+  min-height: 50px;
+}
