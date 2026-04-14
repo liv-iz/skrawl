@@ -40,29 +40,66 @@
 
   const CANVAS_W = 1280;
   const CANVAS_H = 720;
-
   const stage = document.getElementById('stage');
   const rotatePrompt = document.getElementById('rotate-prompt');
 
   function scaleScene() {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const scale = Math.min(vw / CANVAS_W, vh / CANVAS_H);
+    const scale = Math.min(window.innerWidth / CANVAS_W, window.innerHeight / CANVAS_H);
     stage.style.transform = `translate(-50%, -50%) scale(${scale})`;
   }
-
   function checkOrientation() {
-    const portrait = window.innerHeight > window.innerWidth;
-    rotatePrompt.classList.toggle('active', portrait);
+    rotatePrompt.classList.toggle('active', window.innerHeight > window.innerWidth);
   }
-
-  function onResize() {
-    scaleScene();
-    checkOrientation();
-  }
-
+  function onResize() { scaleScene(); checkOrientation(); }
   window.addEventListener('resize', onResize);
   window.addEventListener('orientationchange', onResize);
-  window.addEventListener('load', onResize);
-  onResize();
+
+  let currentScreen = null;
+  const dialogueStrip = document.getElementById('dialogue-strip');
+
+  function showScreen(id, options) {
+    options = options || {};
+
+    if (currentScreen === 'screen-camera' && window.Camera && Camera.close) {
+      Camera.close();
+    }
+    Dialogue.stop();
+
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const next = document.getElementById(id);
+    if (!next) { console.warn('No screen:', id); return; }
+    next.classList.add('active');
+
+    const hideStrip = (id === 'screen-camera' || id === 'screen-preview');
+    dialogueStrip.classList.toggle('hidden', hideStrip);
+
+    currentScreen = id;
+  }
+  window.showScreen = showScreen;
+
+  async function boot() {
+    onResize();
+    const onboarded = await DB.getMeta('onboarded');
+    if (onboarded) {
+      await goToOrderList();
+    } else {
+      startOnboarding();
+    }
+  }
+
+  function startOnboarding() {
+    showScreen('screen-onboarding');
+    Dialogue.playSequence('onboarding', async function () {
+      await DB.setMeta('onboarded', true);
+      await goToOrderList();
+    });
+  }
+
+  async function goToOrderList() {
+    showScreen('screen-order-list');
+    console.log('TODO: render order list');
+  }
+  window.goToOrderList = goToOrderList;
+
+  window.addEventListener('load', boot);
 })();

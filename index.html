@@ -12,17 +12,69 @@
   </div>
 
   <div id="stage" class="stage">
-    <!-- screens go here; populated in later tasks -->
-    <div class="screen active" id="screen-boot">
-      <div class="placeholder-bg"></div>
-      <div class="debug-label">BOOT</div>
+
+    <!-- Base background layer (shared; every screen sits on top) -->
+    <div class="bg-layer"><div class="placeholder-bg"></div></div>
+
+    <!-- Screens -->
+    <div class="screen" id="screen-onboarding">
+      <div class="critter-panel">
+        <div class="placeholder-narrator"></div>
+      </div>
     </div>
 
-    <!-- Persistent layers: popup + dialogue strip -->
+    <div class="screen" id="screen-order-list">
+      <div class="critter-panel">
+        <div class="placeholder-narrator"></div>
+      </div>
+      <div class="main-stage" id="order-cards"></div>
+    </div>
+
+    <div class="screen" id="screen-lesson">
+      <div class="critter-panel" id="lesson-critter"></div>
+    </div>
+
+    <div class="screen" id="screen-crafting">
+      <div class="critter-panel" id="crafting-critter"></div>
+      <div class="main-stage">
+        <div id="crafting-text" class="crafting-text"></div>
+      </div>
+      <div class="side-panel">
+        <button class="btn-primary" id="btn-take-photo">📷 Take a Photo</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-camera"><!-- populated by camera.js --></div>
+
+    <div class="screen" id="screen-preview">
+      <div class="main-stage main-stage-full" id="preview-photo"></div>
+      <div class="side-panel">
+        <button class="btn-secondary" id="btn-retake">Retake</button>
+        <button class="btn-primary" id="btn-confirm">Confirm</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-reaction">
+      <div class="critter-panel" id="reaction-critter"></div>
+      <div class="main-stage" id="reaction-photo"></div>
+    </div>
+
+    <div class="screen" id="screen-scrapbook">
+      <div class="critter-panel">
+        <div class="placeholder-narrator"></div>
+      </div>
+      <div class="main-stage" id="scrapbook-slots"></div>
+      <div class="side-panel">
+        <button class="btn-primary" id="btn-scrapbook-continue">Continue</button>
+      </div>
+    </div>
+
+    <!-- Persistent overlays -->
     <div id="popup-layer" class="popup-layer"></div>
     <div id="dialogue-strip" class="dialogue-strip">
       <div id="dialogue-bubble" class="dialogue-bubble"></div>
     </div>
+
   </div>
 
   <!-- idb CDN -->
