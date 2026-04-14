@@ -167,9 +167,23 @@
   }
 
   function startCamera(critterId) {
-    console.log('TODO: start camera for', critterId);
+    showScreen('screen-camera');
+    Camera.open(
+      function onCapture(blob) {
+        showPreview(critterId, blob);
+      },
+      function onCancel() {
+        showCrafting(critterId);
+      }
+    );
   }
   window.startCamera = startCamera;
+
+  function showPreview(critterId, blob) {
+    console.log('TODO: preview', critterId, blob);
+    showScreen('screen-crafting');
+  }
+  window.showPreview = showPreview;
 
   window.addEventListener('load', boot);
 })();

@@ -44,7 +44,19 @@
       </div>
     </div>
 
-    <div class="screen" id="screen-camera"><!-- populated by camera.js --></div>
+    <div class="screen" id="screen-camera">
+      <button class="btn-back" id="btn-camera-back">← Back</button>
+      <video id="camera-video" class="camera-video" playsinline autoplay muted></video>
+      <div class="camera-framing-guide"></div>
+      <div class="camera-fallback" id="camera-fallback">
+        <div>Camera isn't available here.</div>
+        <label class="btn-primary" for="file-input-fallback">Upload a photo</label>
+      </div>
+      <input type="file" id="file-input-fallback" accept="image/*" capture="environment" style="display:none">
+      <button class="btn-primary" id="btn-take-photo-capture">📷 Take Photo</button>
+      <label class="upload-link" for="file-input-alt">Upload from files</label>
+      <input type="file" id="file-input-alt" accept="image/*" style="display:none">
+    </div>
 
     <div class="screen" id="screen-preview">
       <div class="main-stage main-stage-full" id="preview-photo"></div>
