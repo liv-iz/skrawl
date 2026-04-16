@@ -74,10 +74,10 @@
       { lines: [
         { text: "My window broke in the storm last night…" },
         { text: "It used to catch the light so beautifully." },
-        { text: "Now everything feels a bit… flat.", popup: 'stained-glass-examples' }
+        { text: "Now everything feels a bit… flat." }
       ]},
       { lines: [
-        { text: "Do you know stained glass?" },
+        { text: "Do you know stained glass?", popup: 'stained-glass-examples' },
         { text: "It's a window made of little pieces of colored glass…" },
         { text: "All fit together like a puzzle." }
       ]},
@@ -108,16 +108,16 @@
       ]},
       { lines: [
         { text: "Colors don't just look nice…" },
-        { text: "They feel like something.", popup: 'colour-mood-yellow' }
+        { text: "They feel like something." }
       ]},
       { lines: [
-        { text: "Yellows can feel warm and happy…", popup: 'colour-mood-blue' }
+        { text: "Yellows can feel warm and happy…", popup: 'colour-mood-yellow' }
       ]},
       { lines: [
-        { text: "Blues can feel calm… or a little quiet…", popup: 'colour-mood-grey' }
+        { text: "Blues can feel calm… or a little quiet…", popup: 'colour-mood-blue' }
       ]},
       { lines: [
-        { text: "And darker colors can feel mysterious." }
+        { text: "And darker colors can feel mysterious.", popup: 'colour-mood-grey' }
       ]},
       { lines: [
         { text: "What do you want the light to feel like?", popup: 'dismiss' },
