@@ -66,6 +66,17 @@
     return player;
   }
 
+  const SEQUENCE_SPEAKER = {
+    'onboarding': 'Narrator',
+    'final-closing': 'Narrator',
+    'hugh-lesson': 'Hugh',
+    'hugh-reaction': 'Hugh',
+    'puff-lesson': 'Puff',
+    'puff-reaction': 'Puff',
+    'rowan-lesson': 'Rowan',
+    'rowan-reaction': 'Rowan'
+  };
+
   let activePopupKey = null;
   let tapHandler = null;
 
@@ -119,6 +130,9 @@
 
     dismissAnyPopup();
 
+    const nameEl = document.getElementById('dialogue-name');
+    if (nameEl) nameEl.textContent = SEQUENCE_SPEAKER[sequenceKey] || '';
+
     const player = createPlayer(bubbles);
 
     function step() {
@@ -169,6 +183,8 @@
       tapHandler = null;
     }
     dismissAnyPopup();
+    const nameEl = document.getElementById('dialogue-name');
+    if (nameEl) nameEl.textContent = '';
   }
 
   window.Dialogue = { playSequence, stop, createPlayer, POPUP_CONTENT };

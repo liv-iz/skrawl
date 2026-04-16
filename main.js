@@ -70,7 +70,7 @@
     if (!next) { console.warn('No screen:', id); return; }
     next.classList.add('active');
 
-    const hideStrip = (id === 'screen-camera' || id === 'screen-preview');
+    const hideStrip = (id === 'screen-camera' || id === 'screen-preview' || id === 'screen-crafting');
     dialogueStrip.classList.toggle('hidden', hideStrip);
 
     const showScrapbookBtn = (id === 'screen-order-list');
@@ -131,6 +131,7 @@
       container.appendChild(card);
     });
 
+    document.getElementById('dialogue-name').textContent = 'Narrator';
     document.getElementById('dialogue-bubble').textContent = "Who needs help today?";
   }
   window.goToOrderList = goToOrderList;
@@ -151,9 +152,6 @@
 
   function showCrafting(critterId) {
     const c = CRITTERS[critterId];
-
-    const panel = document.getElementById('crafting-critter');
-    panel.innerHTML = `<div class="${c.spriteClass}"></div>`;
 
     const text = document.getElementById('crafting-text');
     text.innerHTML = `
@@ -242,7 +240,7 @@
     const c = CRITTERS[critterId];
 
     document.getElementById('reaction-critter').innerHTML =
-      `<div class="${c.spriteClass}"></div>`;
+      `<div class="${c.spriteClass} happy"></div>`;
 
     const orders = await DB.loadOrders();
     const order = orders.find(o => o.critterId === critterId);
