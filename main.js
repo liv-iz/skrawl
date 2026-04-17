@@ -6,7 +6,7 @@
       name: 'Hugh',
       full: 'Hugh the Colour Chameleon',
       element: 'COLOUR',
-      material: 'Construction Paper & Scissors',
+      material: 'Paper & Scissors',
       task: 'Make a stained glass window',
       tip: 'Cut and paste construction paper to make your stained glass window',
       spriteClass: 'placeholder-critter-paper',

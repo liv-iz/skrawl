@@ -94,6 +94,18 @@
     el.textContent = line.text;
   }
 
+  function getThoughtBubble() { return document.getElementById('thought-bubble'); }
+
+  function showThoughtBubble() {
+    const tb = getThoughtBubble();
+    if (tb) tb.classList.add('active');
+  }
+
+  function hideThoughtBubble() {
+    const tb = getThoughtBubble();
+    if (tb) tb.classList.remove('active');
+  }
+
   function applyPopup(key) {
     const layer = getPopupLayer();
     if (!layer) return;
@@ -101,6 +113,7 @@
     if (key === 'dismiss') {
       layer.innerHTML = '';
       activePopupKey = null;
+      hideThoughtBubble();
       return;
     }
     if (key === activePopupKey) return;
@@ -112,12 +125,14 @@
     }
     layer.appendChild(factory());
     activePopupKey = key;
+    showThoughtBubble();
   }
 
   function dismissAnyPopup() {
     const layer = getPopupLayer();
     if (layer) layer.innerHTML = '';
     activePopupKey = null;
+    hideThoughtBubble();
   }
 
   function playSequence(sequenceKey, onExit) {
