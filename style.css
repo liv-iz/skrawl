@@ -114,7 +114,7 @@ html, body {
 }
 .placeholder-critter-wood::after  { content: none; }
 .placeholder-narrator {
-    background: url('assets/final/sad_hugh_paper.gif') center/contain no-repeat;
+    background: url('assets/final/mentor_dog.gif') center/contain no-repeat;
 }
 .placeholder-narrator::after { content: none;}
 
