@@ -6,10 +6,11 @@
       name: 'Hugh',
       full: 'Hugh the Colour Chameleon',
       element: 'COLOUR',
-      material: 'Paper & Scissors',
+      material: 'Construction Paper & Scissors',
       task: 'Make a stained glass window',
       tip: 'Cut and paste construction paper to make your stained glass window',
       spriteClass: 'placeholder-critter-paper',
+      headshot: 'assets/final/headshot_hugh.png',
       lessonSequence: 'hugh-lesson',
       reactionSequence: 'hugh-reaction'
     },
@@ -17,10 +18,11 @@
       name: 'Puff',
       full: 'Puff the Sheep',
       element: 'TEXTURE',
-      material: 'Felt, Fabric, or Yarn',
+      material: 'Felt, Cloth, Fabric, or Yarn',
       task: 'Make a scarf',
       tip: 'Use soft materials, like felt, fabric, and yarn, to make your scarf',
       spriteClass: 'placeholder-critter-felt',
+      headshot: 'assets/final/headshot_coming_soon.png',
       lessonSequence: 'puff-lesson',
       reactionSequence: 'puff-reaction'
     },
@@ -32,6 +34,7 @@
       task: 'Rebuild a birdhouse',
       tip: 'Use glue, popsicle sticks or wood blocks, to make your birdhouse',
       spriteClass: 'placeholder-critter-wood',
+      headshot: 'assets/final/headshot_coming_soon.png',
       lessonSequence: 'rowan-lesson',
       reactionSequence: 'rowan-reaction'
     }
@@ -117,7 +120,7 @@
       card.className = 'order-card';
       if (completedIds.has(id)) card.classList.add('completed');
       card.innerHTML = `
-        <div class="order-card-sprite ${c.spriteClass}"></div>
+        <img class="order-card-headshot" src="${c.headshot}" alt="${c.name}">
         <div class="order-card-name">${c.name}</div>
         <div class="order-card-element">${c.element}</div>
         <div class="order-card-material">${c.material}</div>
