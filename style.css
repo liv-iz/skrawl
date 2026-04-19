@@ -123,7 +123,8 @@ html, body {
   position: absolute;
   left: 300px;
   top: 20px;
-  height: 500px;
+  height: 520px;
+  width: 920px;
   z-index: 1;
   pointer-events: none;
   display: none;

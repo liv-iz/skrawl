@@ -19,11 +19,11 @@
   }
 
   const POPUP_CONTENT = {
-    'stained-glass-examples': () => makePlaceholder('STAINED GLASS EXAMPLES', '#e8c547'),
-    'colour-wheel':           () => makeImagePopup('assets/final/colour_wheel.png', 'COLOUR WHEEL', { width: '800px', transform: 'translate(20px, 40px)' }),
-    'colour-wheel-red-green': () => makeImagePopup('assets/final/colour_wheel_red_green.png', 'COLOUR WHEEL — RED + GREEN', { width: '800px', transform: 'translate(20px, 40px)' }),
-    'colour-wheel-blue-orange': () => makeImagePopup('assets/final/colour_wheel_blue_orange.png', 'COLOUR WHEEL — BLUE + ORANGE', { width: '800px', transform: 'translate(20px, 40px)' }),
-    'colour-mood-yellow':     () => makeImagePopup('assets/final/yellow_happy.png', 'YELLOW = HAPPY', { width: '500px', transform: 'translate(15px, -10px)' }),
+    'stained-glass-examples': () => makeImagePopup('assets/final/stained_glass_example_placeholder.png', 'STAINED GLASS EXAMPLES', { width: '500px', transform: 'translate(0px, 10px)' }),
+    'colour-wheel':           () => makeImagePopup('assets/final/colour_wheel.png', 'COLOUR WHEEL', { width: '800px', transform: 'translate(-10px, 60px)' }),
+    'colour-wheel-red-green': () => makeImagePopup('assets/final/colour_wheel_red_green.png', 'COLOUR WHEEL — RED + GREEN', { width: '800px', transform: 'translate(-10px, 60px)' }),
+    'colour-wheel-blue-orange': () => makeImagePopup('assets/final/colour_wheel_blue_orange.png', 'COLOUR WHEEL — BLUE + ORANGE', { width: '800px', transform: 'translate(-10px, 60px)' }),
+    'colour-mood-yellow':     () => makeImagePopup('assets/final/yellow_happy.png', 'YELLOW = HAPPY', { width: '500px', transform: 'translate(0px, -10px)' }),
     'colour-mood-blue':       () => makeImagePopup('assets/final/blue_mood.png', 'BLUE = CALM', { width: '500px', transform: 'translate(0px, 20px)' }),
     'colour-mood-grey':       () => makePlaceholder('GREY = MYSTERIOUS', '#7f8c8d'),
     'texture-soft':           () => makePlaceholder('SOFT (teddy bear)', '#f5cba7'),
