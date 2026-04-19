@@ -11,6 +11,7 @@
       tip: 'Cut and paste construction paper to make your stained glass window',
       spriteClass: 'placeholder-critter-paper',
       headshot: 'assets/final/headshot_hugh.png',
+      quote: "It's beautiful. Thank you, Apprentice!",
       lessonSequence: 'hugh-lesson',
       reactionSequence: 'hugh-reaction'
     },
@@ -23,6 +24,7 @@
       tip: 'Use soft materials, like felt, fabric, and yarn, to make your scarf',
       spriteClass: 'placeholder-critter-felt',
       headshot: 'assets/final/headshot_coming_soon.png',
+      quote: "It's beautiful. Thank you, Apprentice!",
       lessonSequence: 'puff-lesson',
       reactionSequence: 'puff-reaction'
     },
@@ -35,6 +37,7 @@
       tip: 'Use glue, popsicle sticks or wood blocks, to make your birdhouse',
       spriteClass: 'placeholder-critter-wood',
       headshot: 'assets/final/headshot_coming_soon.png',
+      quote: "It's beautiful. Thank you, Apprentice!",
       lessonSequence: 'rowan-lesson',
       reactionSequence: 'rowan-reaction'
     }
@@ -268,63 +271,152 @@
   }
   window.showReaction = showReaction;
 
+  function renderScrapbookBook(container, opts) {
+    opts = opts || {};
+    const orders = opts.orders || [];
+    const byId = Object.fromEntries(orders.map(o => [o.critterId, o]));
+    const ids = ['paper', 'felt', 'wood'];
+
+    const entries = ids.map(function (id) {
+      const c = CRITTERS[id];
+      const order = byId[id];
+      return order && order.photoBlob
+        ? { kind: 'filled', critterId: id, critter: c, photoBlob: order.photoBlob }
+        : { kind: 'empty', critterId: id, critter: c };
+    });
+
+    const spreads = [];
+    for (let i = 0; i < entries.length; i += 2) {
+      spreads.push([entries[i], entries[i + 1] || { kind: 'blank' }]);
+    }
+
+    const urls = [];
+    let currentSpread = 0;
+    if (opts.justCompletedCritterId) {
+      const idx = ids.indexOf(opts.justCompletedCritterId);
+      if (idx >= 0) currentSpread = Math.floor(idx / 2);
+    }
+
+    container.innerHTML = '';
+
+    function buildPage(entry, side) {
+      const page = document.createElement('div');
+      page.className = 'scrapbook-page page-' + side;
+
+      if (entry.kind === 'filled') {
+        const head = document.createElement('img');
+        head.className = 'page-headshot';
+        head.src = entry.critter.headshot;
+        head.alt = entry.critter.name;
+        page.appendChild(head);
+
+        const quoteWrap = document.createElement('div');
+        quoteWrap.className = 'page-quote-wrap';
+        const quote = document.createElement('p');
+        quote.className = 'page-quote';
+        quote.textContent = entry.critter.quote;
+        quoteWrap.appendChild(quote);
+        const sig = document.createElement('p');
+        sig.className = 'page-quote-sig';
+        sig.textContent = '— ' + entry.critter.name;
+        quoteWrap.appendChild(sig);
+        page.appendChild(quoteWrap);
+
+        const photoFrame = document.createElement('div');
+        photoFrame.className = 'page-photo-frame';
+        const tape = document.createElement('span');
+        tape.className = 'page-photo-tape';
+        photoFrame.appendChild(tape);
+        const url = URL.createObjectURL(entry.photoBlob);
+        urls.push(url);
+        const img = document.createElement('img');
+        img.className = 'page-photo';
+        img.src = url;
+        photoFrame.appendChild(img);
+        page.appendChild(photoFrame);
+
+        if (entry.critterId === opts.justCompletedCritterId) {
+          page.classList.add('page-new');
+        }
+      } else if (entry.kind === 'empty') {
+        const empty = document.createElement('div');
+        empty.className = 'page-empty';
+        empty.textContent = 'Not completed yet';
+        page.appendChild(empty);
+      } else {
+        page.classList.add('page-blank');
+      }
+      return page;
+    }
+
+    function renderSpread() {
+      Array.from(container.querySelectorAll('.scrapbook-page, .scrapbook-prev, .scrapbook-next')).forEach(function (n) {
+        n.remove();
+      });
+      const spread = spreads[currentSpread];
+      container.appendChild(buildPage(spread[0], 'left'));
+      container.appendChild(buildPage(spread[1], 'right'));
+
+      if (currentSpread > 0) {
+        const prev = document.createElement('button');
+        prev.className = 'scrapbook-prev';
+        prev.textContent = '←';
+        prev.onclick = function (e) { e.stopPropagation(); currentSpread--; renderSpread(); };
+        container.appendChild(prev);
+      }
+      if (currentSpread < spreads.length - 1) {
+        const next = document.createElement('button');
+        next.className = 'scrapbook-next';
+        next.textContent = '→';
+        next.onclick = function (e) { e.stopPropagation(); currentSpread++; renderSpread(); };
+        container.appendChild(next);
+      }
+    }
+
+    renderSpread();
+    return urls;
+  }
+
+  let scrapbookScreenUrls = [];
   async function showScrapbook(justCompletedCritterId) {
     const orders = await DB.loadOrders();
-    const byId = Object.fromEntries(orders.map(o => [o.critterId, o]));
 
-    const container = document.getElementById('scrapbook-slots');
-    container.innerHTML = '';
-    container.style.display = 'flex';
-
-    const ids = ['paper', 'felt', 'wood'];
-    const imgUrls = [];
-    ids.forEach(function (id) {
-      const c = CRITTERS[id];
-      const slot = document.createElement('div');
-      slot.className = 'scrapbook-slot';
-      const order = byId[id];
-      if (order && order.photoBlob) {
-        const url = URL.createObjectURL(order.photoBlob);
-        imgUrls.push(url);
-        const img = document.createElement('img');
-        img.src = url;
-        slot.appendChild(img);
-        const label = document.createElement('div');
-        label.className = 'scrapbook-slot-label';
-        label.textContent = c.name;
-        slot.appendChild(label);
-        if (id === justCompletedCritterId) slot.classList.add('new');
-      } else {
-        slot.classList.add('empty');
-        slot.textContent = `${c.name}\n(not yet made)`;
-        slot.style.whiteSpace = 'pre-line';
-      }
-      container.appendChild(slot);
+    scrapbookScreenUrls.forEach(u => URL.revokeObjectURL(u));
+    const book = document.getElementById('scrapbook-book');
+    scrapbookScreenUrls = renderScrapbookBook(book, {
+      orders: orders,
+      justCompletedCritterId: justCompletedCritterId
     });
 
     showScreen('screen-scrapbook');
 
+    const continueBtn = document.getElementById('btn-scrapbook-continue');
     const allDone = orders.length >= 3;
     const shown = await DB.getMeta('finalClosingShown');
+
     if (allDone && !shown) {
+      continueBtn.style.display = 'none';
       Dialogue.playSequence('final-closing', async function () {
         await DB.setMeta('finalClosingShown', true);
-        wireScrapbookContinue(imgUrls);
+        continueBtn.style.display = '';
+        wireScrapbookContinue();
       });
     } else {
       document.getElementById('dialogue-bubble').textContent =
         justCompletedCritterId
           ? `Another one for the order book!`
           : `Your order book so far…`;
-      wireScrapbookContinue(imgUrls);
+      continueBtn.style.display = '';
+      wireScrapbookContinue();
     }
   }
   window.showScrapbook = showScrapbook;
 
-  function wireScrapbookContinue(imgUrls) {
+  function wireScrapbookContinue() {
     const btn = document.getElementById('btn-scrapbook-continue');
     btn.onclick = function () {
-      imgUrls.forEach(u => URL.revokeObjectURL(u));
+      scrapbookScreenUrls.forEach(u => URL.revokeObjectURL(u));
+      scrapbookScreenUrls = [];
       goToOrderList();
     };
   }
@@ -336,38 +428,14 @@
     overlay.classList.remove('active');
     overlayUrls.forEach(u => URL.revokeObjectURL(u));
     overlayUrls = [];
-    const slots = document.getElementById('scrapbook-overlay-slots');
-    if (slots) slots.innerHTML = '';
+    const book = document.getElementById('scrapbook-overlay-book');
+    if (book) book.innerHTML = '';
   }
 
   async function openScrapbookOverlay() {
     const orders = await DB.loadOrders();
-    const byId = Object.fromEntries(orders.map(o => [o.critterId, o]));
-    const slots = document.getElementById('scrapbook-overlay-slots');
-    slots.innerHTML = '';
-    overlayUrls = [];
-    ['paper', 'felt', 'wood'].forEach(function (id) {
-      const c = CRITTERS[id];
-      const slot = document.createElement('div');
-      slot.className = 'scrapbook-slot';
-      const order = byId[id];
-      if (order && order.photoBlob) {
-        const url = URL.createObjectURL(order.photoBlob);
-        overlayUrls.push(url);
-        const img = document.createElement('img');
-        img.src = url;
-        slot.appendChild(img);
-        const label = document.createElement('div');
-        label.className = 'scrapbook-slot-label';
-        label.textContent = c.name;
-        slot.appendChild(label);
-      } else {
-        slot.classList.add('empty');
-        slot.textContent = `${c.name}\n(not yet made)`;
-        slot.style.whiteSpace = 'pre-line';
-      }
-      slots.appendChild(slot);
-    });
+    const book = document.getElementById('scrapbook-overlay-book');
+    overlayUrls = renderScrapbookBook(book, { orders: orders });
     document.getElementById('scrapbook-overlay').classList.add('active');
   }
 

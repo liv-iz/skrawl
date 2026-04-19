@@ -106,11 +106,11 @@ html, body {
 }
 .placeholder-critter-paper::after { content: none; }
 .placeholder-critter-felt  {
-    background: url('assets/final/happy_hugh_paper.gif') center/contain no-repeat;
+    background: url('assets/final/placeholder_puff.png') center/contain no-repeat;
 }
 .placeholder-critter-felt::after  { content: none; }
 .placeholder-critter-wood  {
-  background: url('assets/final/happy_hugh_paper.gif') center/contain no-repeat;
+  background: url('assets/final/placeholder_rowan.png') center/contain no-repeat;
 }
 .placeholder-critter-wood::after  { content: none; }
 .placeholder-narrator {
