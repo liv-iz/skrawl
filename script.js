@@ -12,8 +12,8 @@
       { lines: [
         { text: "This is a workshop of small favours and quiet craft." },
         { text: "Folks from all around come here when they need something made." },
-        { text: "They bring ideas, feelings, little problems…" },
-        { text: "And we make something real to help." }
+        { text: "They bring ideas, feelings, little problems…", popup: 'onboarding-ideas-feelings' },
+        { text: "And we make something real to help.", popup: 'dismiss' }
       ]},
       { lines: [
         { text: "But here's the important part, apprentice…" },
@@ -21,8 +21,8 @@
         { text: "You'll be making them with your own hands." }
       ]},
       { lines: [
-        { text: "Paper, string, scraps, whatever you have nearby." },
-        { text: "No need for anything fancy." }
+        { text: "Paper, string, scraps, whatever you have nearby.", popup: 'onboarding-paper-string-scraps' },
+        { text: "No need for anything fancy.", popup:'dismiss' }
       ]},
       { lines: [
         { text: "Each visitor will ask for something different." },
@@ -30,8 +30,8 @@
         { text: "But you should only take a job if you've got the materials for it." }
       ]},
       { lines: [
-        { text: "If you've only got paper, take a paper task." },
-        { text: "If you've got fabric, take a soft task." },
+        { text: "If you've only got paper, take a paper task.", popup: 'onboarding-if-paper' },
+        { text: "If you've got fabric, take a soft task.", popup: 'dismiss' },
         { text: "There's no rush. No one here keeps score." }
       ]},
       { lines: [
@@ -42,18 +42,6 @@
       ]},
       { lines: [
         { text: "Every little help you've given." }
-      ]},
-      { lines: [
-        { text: "The visitors… They're quite special." },
-        { text: "Each one knows their craft better than I ever did." }
-      ]},
-      { lines: [
-        { text: "One might teach you about color…" },
-        { text: "Another about texture…" },
-        { text: "Another about building something that stands strong." }
-      ]},
-      { lines: [
-        { text: "All you have to do is listen while you make." }
       ]},
       { lines: [
         { text: "There's no such thing as 'wrong' here." },
@@ -72,8 +60,8 @@
         { text: "I'm Hugh." }
       ]},
       { lines: [
-        { text: "My window broke in the storm last night…" },
-        { text: "It used to catch the light so beautifully." },
+        { text: "My window broke in the storm last night…", popup: 'hugh-broken-window' },
+        { text: "It used to catch the light so beautifully.", popup: 'dismiss' },
         { text: "Now everything feels a bit… flat." }
       ]},
       { lines: [

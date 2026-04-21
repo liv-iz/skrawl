@@ -53,7 +53,9 @@
         <label class="btn-primary" for="file-input-fallback">Upload a photo</label>
       </div>
       <input type="file" id="file-input-fallback" accept="image/*" capture="environment" style="display:none">
-      <button class="btn-primary" id="btn-take-photo-capture">📷 Take Photo</button>
+      <button class="camera-capture-btn" id="btn-take-photo-capture">
+        <img src="assets/final/camera_button.png" alt="Take Photo">
+      </button>
       <label class="upload-link" for="file-input-alt">Upload from files</label>
       <input type="file" id="file-input-alt" accept="image/*" style="display:none">
     </div>
@@ -81,12 +83,11 @@
     </div>
 
     <div class="screen" id="screen-scrapbook">
-      <div class="critter-panel">
-        <div class="placeholder-narrator"></div>
-      </div>
-      <div class="main-stage" id="scrapbook-book"></div>
-      <div class="side-panel">
-        <button class="btn-primary" id="btn-scrapbook-continue">Continue</button>
+      <div class="scrapbook-book-wrapper">
+        <button class="btn-scrapbook-close" id="btn-scrapbook-continue">
+          <img src="assets/final/close_button_scrapbook.png" alt="Close">
+        </button>
+        <div id="scrapbook-book" class="scrapbook-book"></div>
       </div>
     </div>
 
@@ -99,8 +100,10 @@
     </button>
     <div id="scrapbook-overlay" class="scrapbook-overlay">
       <div class="scrapbook-book-wrapper">
-        <button id="btn-close-scrapbook" class="btn-scrapbook-close">❌</button>
-        <div id="scrapbook-overlay-book" class="scrapbook-overlay-book main-stage"></div>
+        <button id="btn-close-scrapbook" class="btn-scrapbook-close">
+          <img src="assets/final/close_button_scrapbook.png" alt="Close">
+        </button>
+        <div id="scrapbook-overlay-book" class="scrapbook-book"></div>
       </div>
     </div>
     <div id="popup-layer" class="popup-layer"></div>

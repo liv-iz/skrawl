@@ -23,7 +23,7 @@
       task: 'Make a scarf',
       tip: 'Use soft materials, like felt, fabric, and yarn, to make your scarf',
       spriteClass: 'placeholder-critter-felt',
-      headshot: 'assets/final/headshot_coming_soon.png',
+      headshot: 'assets/final/headshot_puff.png',
       quote: "It's beautiful. Thank you, Apprentice!",
       lessonSequence: 'puff-lesson',
       reactionSequence: 'puff-reaction'
@@ -36,7 +36,7 @@
       task: 'Rebuild a birdhouse',
       tip: 'Use glue, popsicle sticks or wood blocks, to make your birdhouse',
       spriteClass: 'placeholder-critter-wood',
-      headshot: 'assets/final/headshot_coming_soon.png',
+      headshot: 'assets/final/headshot_rowan.png',
       quote: "It's beautiful. Thank you, Apprentice!",
       lessonSequence: 'rowan-lesson',
       reactionSequence: 'rowan-reaction'
@@ -357,19 +357,21 @@
       container.appendChild(buildPage(spread[0], 'left'));
       container.appendChild(buildPage(spread[1], 'right'));
 
-      if (currentSpread > 0) {
-        const prev = document.createElement('button');
-        prev.className = 'scrapbook-prev';
-        prev.textContent = '←';
-        prev.onclick = function (e) { e.stopPropagation(); currentSpread--; renderSpread(); };
-        container.appendChild(prev);
-      }
-      if (currentSpread < spreads.length - 1) {
-        const next = document.createElement('button');
-        next.className = 'scrapbook-next';
-        next.textContent = '→';
-        next.onclick = function (e) { e.stopPropagation(); currentSpread++; renderSpread(); };
-        container.appendChild(next);
+      if (!opts.hideNav) {
+        if (currentSpread > 0) {
+          const prev = document.createElement('button');
+          prev.className = 'scrapbook-prev';
+          prev.textContent = '←';
+          prev.onclick = function (e) { e.stopPropagation(); currentSpread--; renderSpread(); };
+          container.appendChild(prev);
+        }
+        if (currentSpread < spreads.length - 1) {
+          const next = document.createElement('button');
+          next.className = 'scrapbook-next';
+          next.textContent = '→';
+          next.onclick = function (e) { e.stopPropagation(); currentSpread++; renderSpread(); };
+          container.appendChild(next);
+        }
       }
     }
 
@@ -385,20 +387,21 @@
     const book = document.getElementById('scrapbook-book');
     scrapbookScreenUrls = renderScrapbookBook(book, {
       orders: orders,
-      justCompletedCritterId: justCompletedCritterId
+      justCompletedCritterId: justCompletedCritterId,
+      hideNav: true
     });
 
     showScreen('screen-scrapbook');
 
-    const continueBtn = document.getElementById('btn-scrapbook-continue');
+    const closeBtn = document.getElementById('btn-scrapbook-continue');
     const allDone = orders.length >= 3;
     const shown = await DB.getMeta('finalClosingShown');
 
     if (allDone && !shown) {
-      continueBtn.style.display = 'none';
+      closeBtn.style.display = 'none';
       Dialogue.playSequence('final-closing', async function () {
         await DB.setMeta('finalClosingShown', true);
-        continueBtn.style.display = '';
+        closeBtn.style.display = '';
         wireScrapbookContinue();
       });
     } else {
@@ -406,7 +409,7 @@
         justCompletedCritterId
           ? `Another one for the order book!`
           : `Your order book so far…`;
-      continueBtn.style.display = '';
+      closeBtn.style.display = '';
       wireScrapbookContinue();
     }
   }
@@ -414,7 +417,8 @@
 
   function wireScrapbookContinue() {
     const btn = document.getElementById('btn-scrapbook-continue');
-    btn.onclick = function () {
+    btn.onclick = function (e) {
+      if (e) e.stopPropagation();
       scrapbookScreenUrls.forEach(u => URL.revokeObjectURL(u));
       scrapbookScreenUrls = [];
       goToOrderList();

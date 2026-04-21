@@ -19,13 +19,18 @@
   }
 
   const POPUP_CONTENT = {
-    'stained-glass-examples': () => makeImagePopup('assets/final/stained_glass_example_placeholder.png', 'STAINED GLASS EXAMPLES', { width: '500px', transform: 'translate(0px, 10px)' }),
+    'onboarding-ideas-feelings': () => makeImagePopup('assets/final/onboarding_ideas_feelings.png', 'IDEAS + FEELINGS', { width: '600px', transform: 'translate(0px, 20px)' }),
+    'onboarding-ask-something-different': () => makeImagePopup('assets/final/onboarding_ask_something_different.png', 'ASK SOMETHING DIFFERENT', { width: '600px', transform: 'translate(0px, 20px)' }),
+    'onboarding-paper-string-scraps': () => makeImagePopup('assets/final/onboarding_paper_string_scraps.png', 'PAPER + STRING + SCRAPS', { width: '600px', transform: 'translate(0px, 20px)' }),
+    'onboarding-if-paper': () => makeImagePopup('assets/final/onboarding_if_paper.png', 'IF PAPER...', { width: '600px', transform: 'translate(0px, 20px)' }),
+    'hugh-broken-window': () => makeImagePopup('assets/final/hugh_broken_window.png', 'HUGH BROKEN WINDOW', { width: '300px', transform: 'translate(10px, 20px)' }),
+    'stained-glass-examples': () => makeImagePopup('assets/final/stained_glass_example.png', 'STAINED GLASS EXAMPLES', { width: '500px', transform: 'translate(0px, 10px)' }),
     'colour-wheel':           () => makeImagePopup('assets/final/colour_wheel.png', 'COLOUR WHEEL', { width: '800px', transform: 'translate(-10px, 60px)' }),
     'colour-wheel-red-green': () => makeImagePopup('assets/final/colour_wheel_red_green.png', 'COLOUR WHEEL — RED + GREEN', { width: '800px', transform: 'translate(-10px, 60px)' }),
     'colour-wheel-blue-orange': () => makeImagePopup('assets/final/colour_wheel_blue_orange.png', 'COLOUR WHEEL — BLUE + ORANGE', { width: '800px', transform: 'translate(-10px, 60px)' }),
     'colour-mood-yellow':     () => makeImagePopup('assets/final/yellow_happy.png', 'YELLOW = HAPPY', { width: '500px', transform: 'translate(0px, -10px)' }),
     'colour-mood-blue':       () => makeImagePopup('assets/final/blue_mood.png', 'BLUE = CALM', { width: '500px', transform: 'translate(0px, 20px)' }),
-    'colour-mood-grey':       () => makePlaceholder('GREY = MYSTERIOUS', '#7f8c8d'),
+    'colour-mood-grey':       () => makeImagePopup('assets/final/grey_mood.png', 'BLUE = CALM', { width: '500px', transform: 'translate(0px, 20px)' }),
     'texture-soft':           () => makePlaceholder('SOFT (teddy bear)', '#f5cba7'),
     'texture-rough':          () => makePlaceholder('ROUGH (rock)', '#7b6a5a'),
     'texture-smooth':         () => makePlaceholder('SMOOTH (mirror)', '#d6eaf8'),
