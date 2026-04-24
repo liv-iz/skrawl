@@ -5,10 +5,10 @@
     paper: {
       name: 'Hugh',
       full: 'Hugh the Colour Chameleon',
-      element: 'COLOUR',
+      element: 'Colour',
       material: 'Construction Paper & Scissors',
-      task: 'Make a stained glass window',
-      tip: 'Cut and paste construction paper to make your stained glass window',
+      task: 'Task: Make a stained glass window!',
+      tip: 'Cut and paste construction paper to make your stained glass window.',
       spriteClass: 'placeholder-critter-paper',
       headshot: 'assets/final/headshot_hugh.png',
       quote: "It's beautiful. Thank you, Apprentice!",
@@ -18,10 +18,10 @@
     felt: {
       name: 'Puff',
       full: 'Puff the Sheep',
-      element: 'TEXTURE',
+      element: 'Texture',
       material: 'Felt, Cloth, Fabric, or Yarn',
-      task: 'Make a scarf',
-      tip: 'Use soft materials, like felt, fabric, and yarn, to make your scarf',
+      task: 'Task: Make a scarf!',
+      tip: 'Use soft materials, like felt, fabric, and yarn, to make your scarf.',
       spriteClass: 'placeholder-critter-felt',
       headshot: 'assets/final/headshot_puff.png',
       quote: "It's beautiful. Thank you, Apprentice!",
@@ -31,10 +31,10 @@
     wood: {
       name: 'Rowan',
       full: 'Rowan the Owl',
-      element: 'FORM',
+      element: 'Form',
       material: 'Popsicle Sticks & Glue',
-      task: 'Rebuild a birdhouse',
-      tip: 'Use glue, popsicle sticks or wood blocks, to make your birdhouse',
+      task: 'Task:Rebuild a birdhouse!',
+      tip: 'Use glue, popsicle sticks or wood blocks, to make your birdhouse.',
       spriteClass: 'placeholder-critter-wood',
       headshot: 'assets/final/headshot_rowan.png',
       quote: "It's beautiful. Thank you, Apprentice!",
@@ -137,7 +137,7 @@
       container.appendChild(card);
     });
 
-    document.getElementById('dialogue-name').textContent = 'Narrator';
+    document.getElementById('dialogue-name').textContent = 'Barnaby';
     document.getElementById('dialogue-bubble').textContent = "Who needs help today?";
   }
   window.goToOrderList = goToOrderList;
@@ -162,8 +162,8 @@
     const text = document.getElementById('crafting-text');
     text.innerHTML = `
       <div style="font-size:36px;font-weight:bold;margin-bottom:16px;">${c.task}</div>
-      <div style="font-size:24px;margin-bottom:24px;">Tip: ${c.tip}</div>
-      <div style="font-size:22px;color:#5a4a35;">When you're ready, photograph your creation against a neutral background.</div>
+      <div style="font-size:24px;margin-bottom:24px;">${c.tip}</div>
+      <div style="font-size:24px;color:#5a4a35;">When you're ready, photograph your creation against a neutral background.</div>
     `;
 
     showScreen('screen-crafting');
@@ -405,7 +405,7 @@
         wireScrapbookContinue();
       });
     } else {
-      document.getElementById('dialogue-name').textContent = 'Narrator';
+      document.getElementById('dialogue-name').textContent = 'Barnaby';
       document.getElementById('dialogue-bubble').textContent =
         justCompletedCritterId
           ? `Another one for the order book!`

@@ -120,11 +120,11 @@ html, body {
 }
 .placeholder-critter-paper::after { content: none; }
 .placeholder-critter-felt  {
-    background: url('assets/final/placeholder_puff.png') center/contain no-repeat;
+    background: url('assets/final/sad_puff_felt.gif') center/contain no-repeat;
 }
 .placeholder-critter-felt::after  { content: none; }
 .placeholder-critter-wood  {
-  background: url('assets/final/placeholder_rowan.png') center/contain no-repeat;
+  background: url('assets/final/sad_rowan_wood.gif') center/contain no-repeat;
 }
 .placeholder-critter-wood::after  { content: none; }
 .placeholder-narrator {
@@ -180,7 +180,7 @@ html, body {
 
 .dialogue-bubble {
   position: absolute;
-  left: 66px;
+  left: 58px;
   right: 28px;
   top: 47px;
   bottom: 15px;
@@ -191,23 +191,25 @@ html, body {
   line-height: 1.4;
   color: #3a2e1f;
   text-align: left;
+  width: 900px;
 }
 
 .dialogue-name {
   position: absolute;
-  top: 22px;
-  left: 66px;
+  top: 21px;
+  left: 58px;
   width: 140px;
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 36px;
+  font-size: 34px;
   font-weight: bold;
   color: #5a3d8a;
   letter-spacing: 1px;
   pointer-events: none;
   text-align: left;
+  font-family: 'Playpen Sans', cursive, sans-serif;
 }
 .dialogue-name:empty { display: none; }
 .bubble-fade-in { animation: fadeIn 0.25s ease-out; }
@@ -303,7 +305,8 @@ html, body {
   max-width: 100%;
   position: relative;
   top: 10px;
-  left: -50px; 
+  left: -14px; 
+  font-family: 'Playpen Sans', cursive, sans-serif;
 }
 
 .crafting-camera-btn {
@@ -349,6 +352,7 @@ html, body {
   top: 0px;
   height: 357.5px;
   border: 4px solid #94864C;
+  background: #F3E8B7;
   border-radius: 20px;
   padding: 16px;
   display: flex;
@@ -390,11 +394,16 @@ html, body {
   font-size: 22px;
   font-weight: bold;
   color: #3a2e1f;
+  position: relative;
+  top: -5%;
+  font-family: 'Playpen Sans', cursive, sans-serif;
 }
 .order-card-element {
   font-size: 18px;
   color: #8b6914;
-  letter-spacing: 2px;
+  position: relative;
+  top: -11%;
+  font-family: 'Playpen Sans', cursive, sans-serif;
 }
 .order-card-material {
   font-size: 16px;
@@ -582,16 +591,16 @@ html, body {
   color: #3a2e1f;
 }
 .page-quote {
+  font-family: 'Playpen Sans', cursive, sans-serif;
   font-size: 20px;
   margin: 0 0 10px 0;
   line-height: 1.35;
-  font-family: Georgia, 'Times New Roman', serif;
 }
 .page-quote-sig {
   font-size: 18px;
   font-weight: bold;
   margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: 'Playpen Sans', cursive, sans-serif;
 }
 .page-photo-frame {
   position: absolute;
@@ -604,9 +613,9 @@ html, body {
 }
 
 /* ── LEFT PAGE positioning ─────────────────────────────────── */
-.scrapbook-page.page-left .page-headshot   { top: 16px;  left: 39px; }
-.scrapbook-page.page-left .page-quote-wrap { top: 170px; left: 44px; }
-.scrapbook-page.page-left .page-photo-frame { top: 30px; right: 21px; transform: rotate(-2deg); }
+.scrapbook-page.page-left .page-headshot   { top: 16px;  left: 15px; }
+.scrapbook-page.page-left .page-quote-wrap { top: 170px; left: 15px; }
+.scrapbook-page.page-left .page-photo-frame { top: 60px; right: 21px; transform: rotate(-2deg); }
 
 /* ── RIGHT PAGE positioning ────────────────────────────────── */
 .scrapbook-page.page-right .page-headshot   { top: 16px;  left: -11px; }
@@ -641,8 +650,7 @@ html, body {
   font-size: 24px;
   color: #8b6914;
   opacity: 0.6;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-style: italic;
+  font-family: 'Playpen Sans', cursive, sans-serif;
 }
 
 .page-new .page-photo-frame {

@@ -26,13 +26,12 @@
       ]},
       { lines: [
         { text: "Each visitor will ask for something different." },
-        { text: "A bit of color… a soft texture… a sturdy shape…" },
-        { text: "But you should only take a job if you've got the materials for it." }
+        { text: "A bit of color… a soft texture… a sturdy shape…", popup: 'onboarding-ask-something-different' },
+        { text: "But you should only take a job if you've got the materials for it.", popup: 'dismiss' }
       ]},
       { lines: [
-        { text: "If you've only got paper, take a paper task.", popup: 'onboarding-if-paper' },
-        { text: "If you've got fabric, take a soft task.", popup: 'dismiss' },
-        { text: "There's no rush. No one here keeps score." }
+        { text: "If you've only got paper, take a paper task. If you've got fabric, take a soft task.", popup: 'onboarding-if-paper' },
+        { text: "There's no rush. No one here keeps score.", popup: 'dismiss' }
       ]},
       { lines: [
         { text: "And when you've finished…" },
@@ -70,19 +69,18 @@
         { text: "All fit together like a puzzle." }
       ]},
       { lines: [
-        { text: "When the light shines through…" },
-        { text: "it paints the whole room.", popup: 'dismiss' }
+        { text: "When the light shines through, it paints the whole room." },
       ]},
       { lines: [
-        { text: "I don't need anything too fancy…" },
+        { text: "I don't need anything too fancy…", popup: 'dismiss' },
         { text: "Just a window shape you like." },
         { text: "Round, tall, wiggly—whatever feels right to you." },
         { text: "As long as the colors can shine through." }
       ]},
       { lines: [
         { text: "Colors can be quite particular, you see." },
-        { text: "Some like to sit quietly together…" },
-        { text: "And some like to stand out.", popup: 'colour-wheel' }
+        { text: "Some like to sit quietly together…", popup: 'colour-wheel' },
+        { text: "And some like to stand out."}
       ]},
       { lines: [
         { text: "Colors that sit across from each other…" },
