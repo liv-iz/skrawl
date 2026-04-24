@@ -77,6 +77,16 @@
         } else {
           done = true;
         }
+      },
+      retreat() {
+        if (done) { done = false; lastBubbleIndex = bubbleIndex; return; }
+        lastBubbleIndex = bubbleIndex;
+        if (lineIndex > 0) {
+          lineIndex--;
+        } else if (bubbleIndex > 0) {
+          bubbleIndex--;
+          lineIndex = bubbles[bubbleIndex].lines.length - 1;
+        }
       }
     };
     return player;
@@ -144,6 +154,28 @@
     showThoughtBubble();
   }
 
+  // Walk the sequence from start through (targetBi, targetLi) and return the
+  // popup key that should be visible at that point ('null' = none).
+  // Used so that retreating restores the correct popup state.
+  function effectivePopupAt(bubbles, targetBi, targetLi) {
+    let key = null;
+    for (let bi = 0; bi <= targetBi; bi++) {
+      const limit = (bi === targetBi) ? targetLi : bubbles[bi].lines.length - 1;
+      for (let li = 0; li <= limit; li++) {
+        const p = bubbles[bi].lines[li].popup;
+        if (p === 'dismiss') key = null;
+        else if (p) key = p;
+      }
+    }
+    return key;
+  }
+
+  function syncPopup(key) {
+    if (key === activePopupKey) return;
+    if (!key) { dismissAnyPopup(); return; }
+    applyPopup(key);
+  }
+
   function dismissAnyPopup() {
     const layer = getPopupLayer();
     if (layer) layer.innerHTML = '';
@@ -175,7 +207,7 @@
         return;
       }
       renderBubble(c.line, c.isNewBubble);
-      applyPopup(c.line.popup);
+      syncPopup(effectivePopupAt(bubbles, c.bubbleIndex, c.lineIndex));
     }
 
     let lastTap = 0;
@@ -185,7 +217,12 @@
       lastTap = now;
       if (e.target && e.target.closest && e.target.closest('button')) return;
       e.preventDefault();
-      player.advance();
+      // Left half of the screen = back, right half = forward.
+      let x = (e.clientX != null) ? e.clientX : null;
+      if (x == null && e.changedTouches && e.changedTouches[0]) x = e.changedTouches[0].clientX;
+      if (x == null) x = window.innerWidth; // default to forward if unknown
+      if (x < window.innerWidth / 2) player.retreat();
+      else player.advance();
       step();
     }
 
