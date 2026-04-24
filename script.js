@@ -135,9 +135,9 @@
         { text: "I'm Puff." }
       ]},
       { lines: [
-        { text: "I lost my scarf during yesterday's cold wind…" },
+        { text: "I lost my scarf during yesterday's cold wind…", popup: 'puff-lost-scarf' },
         { text: "It was so soft in all the right places" },
-        { text: "And so nice to look at!" }
+        { text: "And so nice to look at!", popup: 'dismiss' }
       ]},
       { lines: [
         { text: "Do you know what I mean by texture?" },
@@ -186,9 +186,9 @@
       ]},
       { lines: [
         { text: "I'm Rowan." },
-        { text: "My home was knocked loose in the wind last night." },
+        { text: "My home was knocked loose in the wind last night.", popup: 'rowan-broken-house' },
         { text: "It didn't fall far…" },
-        { text: "But it no longer feels… secure." }
+        { text: "But it no longer feels… secure.", popup: 'dismiss' }
       ]},
       { lines: [
         { text: "Do you know what form is?" },

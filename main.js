@@ -405,6 +405,7 @@
         wireScrapbookContinue();
       });
     } else {
+      document.getElementById('dialogue-name').textContent = 'Narrator';
       document.getElementById('dialogue-bubble').textContent =
         justCompletedCritterId
           ? `Another one for the order book!`

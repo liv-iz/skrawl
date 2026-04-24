@@ -538,6 +538,21 @@ html, body {
   transform: translateX(-50%);
 }
 
+/* Post-reaction scrapbook: close button needs to sit inside the screen.
+   Tweak `right` (more negative = further right, less negative = further left). */
+#screen-scrapbook .btn-scrapbook-close {
+  top: 0px;
+  right: -80px;   /* ← budge the close button horizontally here */
+}
+
+/* Reaction screen: photo position.
+   `left` shifts the whole photo container; tweak this to budge left/right.
+   width stays full so the image still has room to render large. */
+#reaction-photo {
+  left: 0px;      /* ← budge the reaction photo left/right here (negative = left, positive = right) */
+  width: 1280px;
+}
+
 .scrapbook-page {
   position: absolute;
   top: 8%;
@@ -545,8 +560,8 @@ html, body {
   width: 40%;
   padding: 20px;
 }
-.scrapbook-page.page-left { left: 6%; }
-.scrapbook-page.page-right { right: 6%; }
+.scrapbook-page.page-left { left: 9%; }
+.scrapbook-page.page-right { right: 8%; }
 
 /* ── Element visuals (shared) ─────────────────────────────────
    Position is set per-page below — edit those blocks, not this one. */
@@ -591,7 +606,7 @@ html, body {
 /* ── LEFT PAGE positioning ─────────────────────────────────── */
 .scrapbook-page.page-left .page-headshot   { top: 16px;  left: 39px; }
 .scrapbook-page.page-left .page-quote-wrap { top: 170px; left: 44px; }
-.scrapbook-page.page-left .page-photo-frame { top: 30px; right: -8px; transform: rotate(-2deg); }
+.scrapbook-page.page-left .page-photo-frame { top: 30px; right: 21px; transform: rotate(-2deg); }
 
 /* ── RIGHT PAGE positioning ────────────────────────────────── */
 .scrapbook-page.page-right .page-headshot   { top: 16px;  left: -11px; }

@@ -31,16 +31,18 @@
     'colour-mood-yellow':     () => makeImagePopup('assets/final/yellow_happy.png', 'YELLOW = HAPPY', { width: '500px', transform: 'translate(0px, -10px)' }),
     'colour-mood-blue':       () => makeImagePopup('assets/final/blue_mood.png', 'BLUE = CALM', { width: '500px', transform: 'translate(0px, 20px)' }),
     'colour-mood-grey':       () => makeImagePopup('assets/final/grey_mood.png', 'BLUE = CALM', { width: '500px', transform: 'translate(0px, 20px)' }),
-    'texture-soft':           () => makePlaceholder('SOFT (teddy bear)', '#f5cba7'),
-    'texture-rough':          () => makePlaceholder('ROUGH (rock)', '#7b6a5a'),
-    'texture-smooth':         () => makePlaceholder('SMOOTH (mirror)', '#d6eaf8'),
-    'texture-bumpy':          () => makePlaceholder('BUMPY (volcanic rock)', '#5d4037'),
-    'form-2d-square':         () => makePlaceholder('2D SQUARE', '#bdc3c7'),
-    'form-3d-cube':           () => makePlaceholder('3D CUBE', '#95a5a6'),
+    'puff-lost-scarf':       () => makeImagePopup('assets/final/puff_lost_scarf.png', 'PUFF LOST HIS SCARF', { width: '400px', transform: 'translate(0px, 20px)' }),
+    'texture-soft':           () => makeImagePopup('assets/final/puff_texture_soft.png', 'SOFT (abstract)', { width: '500px', transform: 'translate(0px, 20px)' }),
+    'texture-rough':          () => makeImagePopup('assets/final/puff_texture_rough.png', 'ROUGH (abstract)', { width: '500px', transform: 'translate(0px, 20px)' }),
+    'texture-smooth':         () => makeImagePopup('assets/final/puff_texture_smooth.png', 'SMOOTH (abstract)', { width: '500px', transform: 'translate(0px, 20px)' }),
+    'texture-bumpy':          () => makeImagePopup('assets/final/puff_texture_bumpy.png', 'BUMPY (abstract)', { width: '500px', transform: 'translate(0px, 20px)' }),
+    'rowan-broken-house':     () => makeImagePopup('assets/final/rowan_broken_house.png', 'ROWAN BROKEN HOUSE', { width: '300px', transform: 'translate(10px, 20px)' }),
+    'form-2d-square':         () => makeImagePopup('assets/final/rowan_form_2d_square.png', '2D SQUARE', { width: '400px', transform: 'translate(0px, 20px)' }),
+    'form-3d-cube':           () => makeImagePopup('assets/final/rowan_form_3d_cube.png', '3D CUBE', { width: '400px', transform: 'translate(0px, 20px)' }),
     'form-cube-sway':         () => makePlaceholder('3D CUBE (swaying/unstable)', '#d35400'),
-    'form-reinforced':        () => makePlaceholder('REINFORCED CUBE', '#c0392b'),
-    'form-reinforced-roof':   () => makePlaceholder('REINFORCED CUBE + ROOF', '#a04000'),
-    'form-reinforced-base':   () => makePlaceholder('REINFORCED + ROOF + BASE', '#6e2c00')
+    'form-reinforced':        () => makeImagePopup('assets/final/rowan_form_reinforced.png', 'REINFORCED CUBE', { width: '400px', transform: 'translate(0px, 20px)' }),
+    'form-reinforced-roof':   () => makeImagePopup('assets/final/rowan_form_reinforced_roof.png', 'REINFORCED + ROOF', { width: '400px', transform: 'translate(0px, 20px)' }),
+    'form-reinforced-base':   () => makeImagePopup('assets/final/rowan_form_reinforced_base.png', 'REINFORCED + BASE', { width: '400px', transform: 'translate(0px, 20px)' }),
   };
 
   function createPlayer(bubbles) {
