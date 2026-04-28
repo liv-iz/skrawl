@@ -6,12 +6,13 @@
       name: 'Hugh',
       full: 'Hugh the Colour Chameleon',
       element: 'Colour',
-      material: 'Construction Paper, Glue, & Scissors',
+      material: ['Markers', 'Construction Paper', 'Scissors', 'Glue', 'Tape'],
       task: 'Task: Make a stained glass window!',
       tip: 'Cut and paste construction paper to make your stained glass window.',
       spriteClass: 'placeholder-critter-paper',
       headshot: 'assets/final/headshot_hugh.png',
-      quote: "It's beautiful. Thank you, Apprentice!",
+      scrapbookHeadshot: 'assets/final/headshot_hugh_happy.png',
+      quote: "Thank you for fixing my window! You've brought a new light into my life.",
       lessonSequence: 'hugh-lesson',
       reactionSequence: 'hugh-reaction'
     },
@@ -19,12 +20,13 @@
       name: 'Puff',
       full: 'Puff the Sheep',
       element: 'Texture',
-      material: 'Felt, Fabric, or Yarn',
+      material: ['Fabric', 'Felt', 'Yarn', 'String', 'Thread'],
       task: 'Task: Make a scarf!',
       tip: 'Use soft materials, like felt, fabric, and yarn, to make your scarf.',
       spriteClass: 'placeholder-critter-felt',
       headshot: 'assets/final/headshot_puff.png',
-      quote: "It's beautiful. Thank you, Apprentice!",
+      scrapbookHeadshot: 'assets/final/scrapbook_puff.png',
+      quote: "Thank you kindly for the wonderful scarf you made. You chose your textures with such care, and it shows in every layer.",
       lessonSequence: 'puff-lesson',
       reactionSequence: 'puff-reaction'
     },
@@ -32,12 +34,13 @@
       name: 'Rowan',
       full: 'Rowan the Owl',
       element: 'Form',
-      material: 'Popsicle Sticks & Glue',
-      task: 'Task:Rebuild a birdhouse!',
+      material: ['Popsicle Sticks', 'Glue', 'Cardboard', 'Tape', 'Twigs'],
+      task: 'Task: Rebuild a birdhouse!',
       tip: 'Use glue, popsicle sticks or wood blocks, to make your birdhouse.',
       spriteClass: 'placeholder-critter-wood',
       headshot: 'assets/final/headshot_rowan.png',
-      quote: "It's beautiful. Thank you, Apprentice!",
+      scrapbookHeadshot: 'assets/final/scrapbook_rowan.png',
+      quote: "My sincere thanks for the fine birdhouse. I can feel its strength, and I know it will stand firm through wind and weather.",
       lessonSequence: 'rowan-lesson',
       reactionSequence: 'rowan-reaction'
     }
@@ -126,7 +129,12 @@
         <img class="order-card-headshot" src="${c.headshot}" alt="${c.name}">
         <div class="order-card-name">${c.name}</div>
         <div class="order-card-element">${c.element}</div>
-        <div class="order-card-material">${c.material}</div>
+        <div class="order-card-material">
+          <div class="order-card-material-header">Suggested Supplies:</div>
+          <ul class="order-card-material-list">
+            ${(Array.isArray(c.material) ? c.material : [c.material]).map(m => `<li>${m}</li>`).join('')}
+          </ul>
+        </div>
       `;
       if (!completedIds.has(id)) {
         card.addEventListener('click', function (e) {
@@ -306,7 +314,7 @@
       if (entry.kind === 'filled') {
         const head = document.createElement('img');
         head.className = 'page-headshot';
-        head.src = entry.critter.headshot;
+        head.src = entry.critter.scrapbookHeadshot || entry.critter.headshot;
         head.alt = entry.critter.name;
         page.appendChild(head);
 

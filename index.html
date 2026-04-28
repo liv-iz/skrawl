@@ -50,7 +50,6 @@
       <div class="camera-framing-guide"></div>
       <div class="camera-fallback" id="camera-fallback">
         <div>Camera isn't available here.</div>
-        <label class="btn-primary" for="file-input-fallback">Upload a photo</label>
       </div>
       <input type="file" id="file-input-fallback" accept="image/*" capture="environment" style="display:none">
       <button class="camera-capture-btn" id="btn-take-photo-capture">
@@ -63,8 +62,8 @@
     <div class="screen" id="screen-preview">
       <div class="main-stage main-stage-full" id="preview-photo"></div>
       <div class="side-panel">
-        <button class="btn-secondary" id="btn-retake">Retake</button>
-        <button class="btn-primary" id="btn-confirm">Confirm</button>
+        <button class="btn-secondary" id="btn-retake"><span class="btn-label">Retake</span></button>
+        <button class="btn-primary" id="btn-confirm"><span class="btn-label">Confirm</span></button>
       </div>
       <div class="blur-modal" id="blur-modal">
         <div class="blur-modal-box">

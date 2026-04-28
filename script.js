@@ -156,13 +156,13 @@
         { text: "And that difference matters." }
       ]},
       { lines: [
-        { text: "Soft textures feel safe…" },
-        { text: "Scratchy ones feel uncomfortable…" },
+        { text: "Soft textures feel safe…", popup: 'soft-example' },
+        { text: "Scratchy ones feel uncomfortable…", popup: 'scratchy-example' },
         { text: "But sometimes…" },
-        { text: "…a mix can still work if it's done carefully." }
+        { text: "…a mix can still work if it's done carefully.", popup: 'mix-example' }
       ]},
       { lines: [
-        { text: "Could you make me a new scarf?" },
+        { text: "Could you make me a new scarf?", popup: 'dismiss' },
         { text: "You can use any materials you have…" },
         { text: "Felt… yarn… fabric… anything soft or interesting." },
         { text: "Try mixing textures… and see what feels right." }
@@ -203,16 +203,6 @@
       { lines: [
         { text: "This has volume…" },
         { text: "…but it's not stable yet." }
-      ]},
-      { lines: [
-        { text: "But form alone is not enough." },
-        { text: "What matters is how it holds together." },
-        { text: "If something is too weak…" }
-      ]},
-      { lines: [
-        { text: "It will fall apart." },
-        { text: "If it is balanced…" },
-        { text: "It stays strong." }
       ]},
       { lines: [
         { text: "Strong structures usually need a few things…" },

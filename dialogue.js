@@ -23,26 +23,30 @@
     'onboarding-ask-something-different': () => makeImagePopup('assets/final/onboarding_ask_something_different.png', 'ASK SOMETHING DIFFERENT', { width: '600px', transform: 'translate(0px, 20px)' }),
     'onboarding-paper-string-scraps': () => makeImagePopup('assets/final/onboarding_paper_string_scraps.png', 'PAPER + STRING + SCRAPS', { width: '600px', transform: 'translate(0px, 20px)' }),
     'onboarding-if-paper': () => makeImagePopup('assets/final/onboarding_if_paper.png', 'IF PAPER...', { width: '600px', transform: 'translate(0px, 20px)' }),
-    'hugh-broken-window': () => makeImagePopup('assets/final/hugh_broken_window.png', 'HUGH BROKEN WINDOW', { width: '300px', transform: 'translate(0px, 2px)' }),
+    'hugh-broken-window': () => makeImagePopup('assets/final/hugh_broken_window.gif', 'HUGH BROKEN WINDOW', { width: '300px', transform: 'translate(0px, 2px)' }),
     'stained-glass-examples': () => makeImagePopup('assets/final/stained_glass_example.png', 'STAINED GLASS EXAMPLES', { width: '500px', transform: 'translate(0px, 10px)' }),
     'colour-wheel':           () => makeImagePopup('assets/final/colour_wheel.png', 'COLOUR WHEEL', { width: '800px', transform: 'translate(-10px, 60px)' }),
     'colour-wheel-red-green': () => makeImagePopup('assets/final/colour_wheel_red_green.png', 'COLOUR WHEEL — RED + GREEN', { width: '800px', transform: 'translate(-10px, 60px)' }),
     'colour-wheel-blue-orange': () => makeImagePopup('assets/final/colour_wheel_blue_orange.png', 'COLOUR WHEEL — BLUE + ORANGE', { width: '800px', transform: 'translate(-10px, 60px)' }),
     'colour-mood-yellow':     () => makeImagePopup('assets/final/yellow_happy.png', 'YELLOW = HAPPY', { width: '500px', transform: 'translate(-20px, 20px)' }),
+    'colour-wheel-animated': () => makeImagePopup('assets/final/colour_wheel_animated.gif', 'COLOUR WHEEL ANIMATED', { width: '800px', transform: 'translate(-10px, 60px)' }),
     'colour-mood-blue':       () => makeImagePopup('assets/final/blue_mood.png', 'BLUE = CALM', { width: '480px', transform: 'translate(0px, 20px)' }),
     'colour-mood-grey':       () => makeImagePopup('assets/final/grey_mood.png', 'BLUE = CALM', { width: '500px', transform: 'translate(0px, 20px)' }),
-    'puff-lost-scarf':       () => makeImagePopup('assets/final/puff_lost_scarf.png', 'PUFF LOST HIS SCARF', { width: '400px', transform: 'translate(0px, 20px)' }),
-    'texture-soft':           () => makeImagePopup('assets/final/puff_texture_soft.png', 'SOFT (abstract)', { width: '500px', transform: 'translate(0px, 20px)' }),
-    'texture-rough':          () => makeImagePopup('assets/final/puff_texture_rough.png', 'ROUGH (abstract)', { width: '500px', transform: 'translate(0px, 20px)' }),
-    'texture-smooth':         () => makeImagePopup('assets/final/puff_texture_smooth.png', 'SMOOTH (abstract)', { width: '500px', transform: 'translate(0px, 20px)' }),
-    'texture-bumpy':          () => makeImagePopup('assets/final/puff_texture_bumpy.png', 'BUMPY (abstract)', { width: '500px', transform: 'translate(0px, 20px)' }),
-    'rowan-broken-house':     () => makeImagePopup('assets/final/rowan_broken_house.png', 'ROWAN BROKEN HOUSE', { width: '300px', transform: 'translate(10px, 20px)' }),
-    'form-2d-square':         () => makeImagePopup('assets/final/rowan_form_2d_square.png', '2D SQUARE', { width: '400px', transform: 'translate(0px, 20px)' }),
-    'form-3d-cube':           () => makeImagePopup('assets/final/rowan_form_3d_cube.png', '3D CUBE', { width: '400px', transform: 'translate(0px, 20px)' }),
-    'form-cube-sway':         () => makePlaceholder('3D CUBE (swaying/unstable)', '#d35400'),
-    'form-reinforced':        () => makeImagePopup('assets/final/rowan_form_reinforced.png', 'REINFORCED CUBE', { width: '400px', transform: 'translate(0px, 20px)' }),
-    'form-reinforced-roof':   () => makeImagePopup('assets/final/rowan_form_reinforced_roof.png', 'REINFORCED + ROOF', { width: '400px', transform: 'translate(0px, 20px)' }),
-    'form-reinforced-base':   () => makeImagePopup('assets/final/rowan_form_reinforced_base.png', 'REINFORCED + BASE', { width: '400px', transform: 'translate(0px, 20px)' }),
+    'puff-lost-scarf':       () => makeImagePopup('assets/final/puff_lost_scarf.gif', 'PUFF LOST THEIR  SCARF', { width: '400px', transform: 'translate(0px, 20px)' }),
+    'texture-soft':           () => makeImagePopup('assets/final/puff_texture_soft.png', 'SOFT (abstract)', { width: '300px', transform: 'translate(-20px, 20px)' }),
+    'texture-rough':          () => makeImagePopup('assets/final/puff_texture_rough.png', 'ROUGH (abstract)', { width: '350px', transform: 'translate(-20px, 20px)' }),
+    'texture-smooth':         () => makeImagePopup('assets/final/puff_texture_smooth.png', 'SMOOTH (abstract)', { width: '400px', transform: 'translate(-20px, 20px)' }),
+    'texture-bumpy':          () => makeImagePopup('assets/final/puff_texture_bumpy.png', 'BUMPY (abstract)', { width: '300px', transform: 'translate(-20px, 20px)' }),
+    'soft-example':          () => makeImagePopup('assets/final/puff_texture_soft_example.png', 'SOFT EXAMPLE', { width: '400px', transform: 'translate(-20px, 20px)' }),
+    'scratchy-example':      () => makeImagePopup('assets/final/puff_texture_scratchy_example.png', 'SCRATCHY EXAMPLE', { width: '400px', transform: 'translate(-20px, 20px)' }),
+    'mix-example':           () => makeImagePopup('assets/final/puff_texture_mix_example.png', 'MIX EXAMPLE', { width: '400px', transform: 'translate(-20px, 20px)' }),
+    'rowan-broken-house':     () => makeImagePopup('assets/final/rowan_broken_house.gif', 'ROWAN BROKEN HOUSE', { width: '500px', transform: 'translate(10px, 20px)' }),
+    'form-2d-square':         () => makeImagePopup('assets/final/rowan_form_2d_square.png', '2D SQUARE', { width: '300px', transform: 'translate(-20px, 30px)' }),
+    'form-3d-cube':           () => makeImagePopup('assets/final/rowan_form_3d_cube.png', '3D CUBE', { width: '300px', transform: 'translate(-20px, 30px)' }),
+    'form-cube-sway':         () => makeImagePopup('assets/final/rowan_form_cube_sway.gif', '3D CUBE SWAY', { width: '300px', transform: 'translate(-20px, 30px)' }),
+    'form-reinforced':        () => makeImagePopup('assets/final/rowan_form_reinforced.png', 'REINFORCED CUBE', { width: '300px', transform: 'translate(-20px, 20px)' }),
+    'form-reinforced-roof':   () => makeImagePopup('assets/final/rowan_form_reinforced_roof.png', 'REINFORCED + ROOF', { width: '300px', transform: 'translate(-20px, 20px)' }),
+    'form-reinforced-base':   () => makeImagePopup('assets/final/rowan_form_reinforced_base.png', 'REINFORCED + BASE', { width: '300px', transform: 'translate(-20px, 20px)' }),
   };
 
   function createPlayer(bubbles) {
@@ -217,12 +221,15 @@
       lastTap = now;
       if (e.target && e.target.closest && e.target.closest('button')) return;
       e.preventDefault();
-      // Left half of the screen = back, right half = forward.
+      // Outer 25% bands navigate: leftmost 25% = back, rightmost 25% = forward.
+      // Middle 50% is a dead zone, so accidental taps don't advance.
       let x = (e.clientX != null) ? e.clientX : null;
       if (x == null && e.changedTouches && e.changedTouches[0]) x = e.changedTouches[0].clientX;
-      if (x == null) x = window.innerWidth; // default to forward if unknown
-      if (x < window.innerWidth / 2) player.retreat();
-      else player.advance();
+      if (x == null) return;
+      const w = window.innerWidth;
+      if (x < w * 0.25) player.retreat();
+      else if (x > w * 0.75) player.advance();
+      else return; // dead zone — ignore
       step();
     }
 
