@@ -216,7 +216,7 @@
         { text: "But they do not break easily." }
       ]},
       { lines: [
-        { text: "Could you rebuild this birdhouse?" },
+        { text: "Could you build me a new birdhouse?" },
         { text: "You can use wood pieces…" },
         { text: "sticks… or anything you have." }
       ]},
@@ -239,16 +239,13 @@
     'final-closing': [
       { lines: [
         { text: "Well then, apprentice…" },
-        { text: "You've helped everyone who came through today." },
-        { text: "Every order filled. Every visitor happy." }
-      ]},
-      { lines: [
         { text: "Your order book is full of lovely things." },
         { text: "Each one made by your own hands." }
       ]},
       { lines: [
         { text: "That's something to be proud of." },
-        { text: "Well done." }
+        { text: "Well done." },
+        { text: "Come back soon to explore more of the workshop!" }
       ], isExit: true }
     ]
 
