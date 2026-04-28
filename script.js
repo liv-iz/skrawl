@@ -83,9 +83,9 @@
         { text: "And some like to stand out."}
       ]},
       { lines: [
-        { text: "Colors that sit across from each other…" },
-        { text: "Like red and green…", popup: 'colour-wheel-red-green' },
-        { text: "Or blue and orange…", popup: 'colour-wheel-blue-orange' }
+        { text: "Colors that sit across from each other…", popup: 'colour-wheel-animated' },
+        { text: "Like red and green…"},
+        { text: "Or blue and orange…"}
       ]},
       { lines: [
         { text: "They're called complementary colors." },
