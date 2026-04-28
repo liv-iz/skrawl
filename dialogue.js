@@ -19,6 +19,7 @@
   }
 
   const POPUP_CONTENT = {
+    'onboarding-arrows': () => makeImagePopup('assets/final/onboarding_arrows.png', 'ONBOARDING ARROWS', { position: 'absolute', left: '-450px', top: '0px', width: '1280px', height: '720px' }),
     'onboarding-ideas-feelings': () => makeImagePopup('assets/final/onboarding_ideas_feelings.png', 'IDEAS + FEELINGS', { width: '600px', transform: 'translate(0px, 20px)' }),
     'onboarding-ask-something-different': () => makeImagePopup('assets/final/onboarding_ask_something_different.png', 'ASK SOMETHING DIFFERENT', { width: '600px', transform: 'translate(0px, 20px)' }),
     'onboarding-paper-string-scraps': () => makeImagePopup('assets/final/onboarding_paper_string_scraps.png', 'PAPER + STRING + SCRAPS', { width: '600px', transform: 'translate(0px, 20px)' }),
@@ -155,7 +156,11 @@
     }
     layer.appendChild(factory());
     activePopupKey = key;
-    showThoughtBubble();
+    if (key === 'onboarding-arrows') {
+      hideThoughtBubble();
+    } else {
+      showThoughtBubble();
+    }
   }
 
   // Walk the sequence from start through (targetBi, targetLi) and return the

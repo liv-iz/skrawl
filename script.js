@@ -5,8 +5,8 @@
 
     'onboarding': [
       { lines: [
-        { text: "Ahh… there you are." },
-        { text: "I was wondering when you'd arrive." },
+        { text: "Ahh… there you are.", popup: 'onboarding-arrows' },
+        { text: "I was wondering when you'd arrive.", popup: 'dismiss' },
         { text: "Come in, come in. Mind the scraps on the floor—this old place has a habit of making things when no one's looking." }
       ]},
       { lines: [
