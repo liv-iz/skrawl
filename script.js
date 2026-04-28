@@ -190,24 +190,20 @@
       ]},
       { lines: [
         { text: "Do you know what form is?" },
-        { text: "It's the shape something has…", popup: 'form-2d-square' },
-        { text: "Not just flat like paper…", popup: 'form-3d-cube' },
-        { text: "But something with depth." },
-        { text: "Something you can build around." }
-      ]},
-      { lines: [
-        { text: "When shapes come together…" },
-        { text: "They can become something you can hold space inside." },
-        { text: "That is called volume.", popup: 'form-cube-sway' }
+        { text: "It's the shape something has…"},
+        { text: "Not just flat like paper…", popup: 'form-2d-square' },
+        { text: "But something with depth.", popup: 'form-3d-cube' },
+        { text: "Something you can hold space inside." },
+        { text: "That is called volume." }
       ]},
       { lines: [
         { text: "This has volume…" },
-        { text: "…but it's not stable yet." }
+        { text: "…but it's not stable yet.", popup: 'form-cube-sway' }
       ]},
       { lines: [
         { text: "Strong structures usually need a few things…" },
-        { text: "Pieces that support each other…", popup: 'form-reinforced' },
-        { text: "Balanced sides…", popup: 'form-reinforced-roof' },
+        { text: "Balanced sides…", popup: 'form-reinforced' },
+        { text: "Pieces that support each other…", popup: 'form-reinforced-roof' },
         { text: "And a base that can hold weight…", popup: 'form-reinforced-base' }
       ]},
       { lines: [
