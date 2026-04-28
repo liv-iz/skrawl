@@ -36,7 +36,7 @@
     'texture-soft':           () => makeImagePopup('assets/final/puff_texture_soft.png', 'SOFT (abstract)', { width: '300px', transform: 'translate(-20px, 20px)' }),
     'texture-rough':          () => makeImagePopup('assets/final/puff_texture_rough.png', 'ROUGH (abstract)', { width: '350px', transform: 'translate(-20px, 20px)' }),
     'texture-smooth':         () => makeImagePopup('assets/final/puff_texture_smooth.png', 'SMOOTH (abstract)', { width: '400px', transform: 'translate(-20px, 20px)' }),
-    'texture-bumpy':          () => makeImagePopup('assets/final/puff_texture_bumpy.png', 'BUMPY (abstract)', { width: '300px', transform: 'translate(-20px, 20px)' }),
+    'texture-bumpy':          () => makeImagePopup('assets/final/Puff_texture_bumpy.png', 'BUMPY (abstract)', { width: '300px', transform: 'translate(-20px, 20px)' }),
     'soft-example':          () => makeImagePopup('assets/final/puff_texture_soft_example.png', 'SOFT EXAMPLE', { width: '350px', transform: 'translate(-20px, 35px)' }),
     'scratchy-example':      () => makeImagePopup('assets/final/puff_texture_scratchy_example.png', 'SCRATCHY EXAMPLE', { width: '400px', transform: 'translate(-20px, 20px)' }),
     'mix-example':           () => makeImagePopup('assets/final/puff_texture_mix_example.png', 'MIX EXAMPLE', { width: '400px', transform: 'translate(-20px, 20px)' }),
