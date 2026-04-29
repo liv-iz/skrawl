@@ -79,7 +79,7 @@
     if (!next) { console.warn('No screen:', id); return; }
     next.classList.add('active');
 
-    const hideStrip = (id === 'screen-camera' || id === 'screen-preview' || id === 'screen-crafting');
+    const hideStrip = (id === 'screen-camera' || id === 'screen-preview' || id === 'screen-crafting' || id === 'screen-landing');
     dialogueStrip.classList.toggle('hidden', hideStrip);
 
     const showScrapbookBtn = (id === 'screen-order-list');
@@ -93,12 +93,17 @@
 
   async function boot() {
     onResize();
-    const onboarded = await DB.getMeta('onboarded');
-    if (onboarded) {
-      await goToOrderList();
-    } else {
-      startOnboarding();
-    }
+    showScreen('screen-landing');
+    const landingScreen = document.getElementById('screen-landing');
+    landingScreen.addEventListener('click', async function onStart() {
+      landingScreen.removeEventListener('click', onStart);
+      const onboarded = await DB.getMeta('onboarded');
+      if (onboarded) {
+        await goToOrderList();
+      } else {
+        startOnboarding();
+      }
+    });
   }
 
   function startOnboarding() {

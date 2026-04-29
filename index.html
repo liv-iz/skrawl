@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Skrawl</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,6 +17,13 @@
     <div class="bg-layer"><div class="placeholder-bg"></div></div>
 
     <!-- Screens -->
+    <div class="screen" id="screen-landing">
+      <div class="landing-content">
+        <h1 class="landing-title">Skrawl</h1>
+        <p class="landing-subtitle">Tap anywhere to start</p>
+      </div>
+    </div>
+
     <div class="screen" id="screen-onboarding">
       <div class="critter-panel">
         <div class="placeholder-narrator"></div>
@@ -54,12 +58,12 @@
       <div class="camera-fallback" id="camera-fallback">
         <div>Camera isn't available here.</div>
       </div>
-      <input type="file" id="file-input-fallback" accept="image/*" capture="environment" style="display:none" autocomplete="off">
+      <input type="file" id="file-input-fallback" accept="image/*" capture="environment" style="display:none">
       <button class="camera-capture-btn" id="btn-take-photo-capture">
         <img src="assets/final/camera_button.png" alt="Take Photo">
       </button>
       <label class="upload-link" for="file-input-alt">Upload from files</label>
-      <input type="file" id="file-input-alt" accept="image/*" style="display:none" autocomplete="off">
+      <input type="file" id="file-input-alt" accept="image/*" style="display:none">
     </div>
 
     <div class="screen" id="screen-preview">
