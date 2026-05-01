@@ -13,6 +13,7 @@
       headshot: 'assets/final/headshot_hugh.png',
       scrapbookHeadshot: 'assets/final/headshot_hugh_happy.png',
       quote: "Thank you for fixing my window! You've brought a new light into my life.",
+      quoteFont: "'Schoolbell', cursive",
       lessonSequence: 'hugh-lesson',
       reactionSequence: 'hugh-reaction'
     },
@@ -26,7 +27,9 @@
       spriteClass: 'placeholder-critter-felt',
       headshot: 'assets/final/headshot_puff.png',
       scrapbookHeadshot: 'assets/final/scrapbook_puff.png',
-      quote: "Thank you kindly for the wonderful scarf you made. You chose your textures with such care, and it shows in every layer.",
+      quote: "Thank you kindly for the wonderful scarf. Your care shows in every fibre.",
+      quoteFont: "'Caveat', cursive",
+      quoteFontSize: '22px',
       lessonSequence: 'puff-lesson',
       reactionSequence: 'puff-reaction'
     },
@@ -40,7 +43,8 @@
       spriteClass: 'placeholder-critter-wood',
       headshot: 'assets/final/headshot_rowan.png',
       scrapbookHeadshot: 'assets/final/scrapbook_rowan.png',
-      quote: "My sincere thanks for the fine birdhouse. I can feel its strength, and I know it will stand firm through wind and weather.",
+      quote: "My sincere thanks for the fine birdhouse. I can feel its strength.",
+      quoteFont: "'Mansalva', sans-serif",
       lessonSequence: 'rowan-lesson',
       reactionSequence: 'rowan-reaction'
     }
@@ -97,6 +101,13 @@
     const landingScreen = document.getElementById('screen-landing');
     landingScreen.addEventListener('click', async function onStart() {
       landingScreen.removeEventListener('click', onStart);
+      
+      const bgMusic = document.getElementById('bg-music');
+      if (bgMusic) {
+        bgMusic.volume = 0.3; // Adjust background volume (0.0 to 1.0)
+        bgMusic.play().catch(e => console.warn('Music play failed:', e));
+      }
+      
       const onboarded = await DB.getMeta('onboarded');
       if (onboarded) {
         await goToOrderList();
@@ -176,7 +187,7 @@
     text.innerHTML = `
       <div style="font-size:36px;font-weight:bold;margin-bottom:16px;">${c.task}</div>
       <div style="font-size:24px;margin-bottom:24px;">${c.tip}</div>
-      <div style="font-size:24px;color:#5a4a35;">When you're ready, photograph your creation against a neutral background.</div>
+      <div style="font-size:24px;color:#5a4a35;">When you're ready, click the camera icon to photograph your creation.</div>
     `;
 
     showScreen('screen-crafting');
@@ -328,10 +339,22 @@
         const quote = document.createElement('p');
         quote.className = 'page-quote';
         quote.textContent = entry.critter.quote;
+        if (entry.critter.quoteFont) {
+          quote.style.fontFamily = entry.critter.quoteFont;
+        }
+        if (entry.critter.quoteFontSize) {
+          quote.style.fontSize = entry.critter.quoteFontSize;
+        }
         quoteWrap.appendChild(quote);
         const sig = document.createElement('p');
         sig.className = 'page-quote-sig';
         sig.textContent = '— ' + entry.critter.name;
+        if (entry.critter.quoteFont) {
+          sig.style.fontFamily = entry.critter.quoteFont;
+        }
+        if (entry.critter.quoteFontSize) {
+          sig.style.fontSize = entry.critter.quoteFontSize;
+        }
         quoteWrap.appendChild(sig);
         page.appendChild(quoteWrap);
 

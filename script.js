@@ -26,7 +26,7 @@
       ]},
       { lines: [
         { text: "Each visitor will ask for something different." },
-        { text: "A bit of color… a soft texture… a sturdy shape…", popup: 'onboarding-ask-something-different' },
+        { text: "A bit of colour… a soft texture… a sturdy shape…", popup: 'onboarding-ask-something-different' },
         { text: "But you should only take a job if you've got the materials for it.", popup: 'dismiss' }
       ]},
       { lines: [
@@ -65,7 +65,7 @@
       ]},
       { lines: [
         { text: "Do you know stained glass?", popup: 'stained-glass-examples' },
-        { text: "It's a window made of little pieces of colored glass…" },
+        { text: "It's a window made of little pieces of coloured glass…" },
         { text: "All fit together like a puzzle." }
       ]},
       { lines: [
@@ -75,25 +75,25 @@
         { text: "I don't need anything too fancy…", popup: 'dismiss' },
         { text: "Just a window shape you like." },
         { text: "Round, tall, wiggly—whatever feels right to you." },
-        { text: "As long as the colors can shine through." }
+        { text: "As long as the colours can shine through." }
       ]},
       { lines: [
-        { text: "Colors can be quite particular, you see." },
+        { text: "Colours can be quite particular, you see." },
         { text: "Some like to sit quietly together…", popup: 'colour-wheel' },
         { text: "And some like to stand out."}
       ]},
       { lines: [
-        { text: "Colors that sit across from each other…", popup: 'colour-wheel-animated' },
+        { text: "Colours that sit across from each other…", popup: 'colour-wheel-animated' },
         { text: "Like red and green…"},
         { text: "Or blue and orange…"}
       ]},
       { lines: [
-        { text: "They're called complementary colors." },
+        { text: "They're called complementary colours." },
         { text: "They make each other brighter." },
         { text: "Like best friends who help each other shine.", popup: 'dismiss' }
       ]},
       { lines: [
-        { text: "Colors don't just look nice…" },
+        { text: "Colours don't just look nice…" },
         { text: "They feel like something." }
       ]},
       { lines: [
@@ -103,7 +103,7 @@
         { text: "Blues can feel calm… or a little quiet…", popup: 'colour-mood-blue' }
       ]},
       { lines: [
-        { text: "And darker colors can feel mysterious.", popup: 'colour-mood-grey' }
+        { text: "And darker colours can feel mysterious.", popup: 'colour-mood-grey' }
       ]},
       { lines: [
         { text: "What do you want the light to feel like?", popup: 'dismiss' },
@@ -113,7 +113,7 @@
       ]},
       { lines: [
         { text: "Could you make me a stained glass window?" },
-        { text: "Use colors that you think will shine together…" },
+        { text: "Use colours that you think will shine together…" },
         { text: "Or ones that feel just right to you." }
       ], isExit: true }
     ],

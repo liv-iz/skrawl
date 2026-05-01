@@ -667,8 +667,8 @@ html, body {
 }
 .page-quote {
   font-family: 'Playpen Sans', cursive, sans-serif;
-  font-size: 20px;
-  margin: 0 0 10px 0;
+  font-size: 18px;
+  margin: 0 20px 10px 0;
   line-height: 1.35;
 }
 .page-quote-sig {
@@ -831,7 +831,7 @@ html, body {
 #screen-landing {
   cursor: pointer;
   /* Add your specific landing page background image here: */
-  background: url('assets/final/your_landing_image.png') center/cover no-repeat;
+  background: url('assets/final/onboarding_background.png') center/cover no-repeat;
   z-index: 1; /* Ensures the background covers the default workshop background */
 }
 .landing-content {
