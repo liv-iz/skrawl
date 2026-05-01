@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'Playpen Sans';
+  src: url('assets/fonts/PlaypenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Schoolbell';
+  src: url('assets/fonts/Schoolbell-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('assets/fonts/Caveat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mansalva';
+  src: url('assets/fonts/Mansalva-Regular.ttf') format('truetype');
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
