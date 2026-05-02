@@ -851,7 +851,7 @@ html, body {
 #screen-landing {
   cursor: pointer;
   /* Add your specific landing page background image here: */
-  background: url('assets/final/onboarding_background.png') center/cover no-repeat;
+  background: url('assets/final/landing_background.gif') center/cover no-repeat;
   z-index: 1; /* Ensures the background covers the default workshop background */
 }
 .landing-content {
@@ -862,19 +862,19 @@ html, body {
   align-items: center;
   justify-content: center;
   /* Nudge the text up (negative) or down (positive): */
-  transform: translateY(-100px); 
-  color: #3a2e1f;
+  color: #a3493a;
   font-family: 'Playpen Sans', cursive, sans-serif;
 }
 .landing-title {
-  font-size: 140px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  text-shadow: 0 4px 12px rgba(255, 255, 255, 0.6);
+  display: none;
 }
 .landing-subtitle {
-  font-size: 36px;
+  font-size: 32px;
   animation: fadePulse 1.5s ease-in-out infinite;
+  position: absolute;
+  bottom: 35px;
+  left: 490px;
+
 }
 @keyframes fadePulse {
   0%, 100% { opacity: 1; }
